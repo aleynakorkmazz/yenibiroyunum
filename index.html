@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aleyna Korkmaz | YKS & CineBot</title>
+    <title>Aleyna Korkmaz | YKS Rehberi & CineBot</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,25 +14,24 @@
             --dark: #2d3436;
             --light: #dfe6e9;
             --bg-grad: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --chat-bg: #ffffff;
         }
 
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: var(--bg-grad); color: var(--dark); min-height: 100vh; }
 
-        /* --- NAVİGASYON --- */
+        /* NAVİGASYON */
         nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); cursor: pointer; }
         .nav-links { display: flex; gap: 30px; }
         .nav-item { cursor: pointer; font-weight: 600; transition: 0.3s; color: var(--dark); }
         .nav-item:hover { color: var(--primary); }
 
-        /* --- HERO --- */
+        /* HERO */
         header.hero { text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 40px; }
         .hero h1 { font-size: 3rem; margin: 0; font-weight: 800; }
         .tagline { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-top: 10px; display: inline-block; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
 
-        /* --- HOME GRID --- */
+        /* ANA SAYFA KARTLARI */
         .home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
         .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
@@ -44,22 +43,22 @@
         .card-body h3 { margin: 0 0 10px; color: var(--dark); font-size: 1.5rem; }
         .card-body p { color: #777; font-size: 0.9rem; margin: 0; }
 
-        /* --- DERS DETAYLARI --- */
+        /* DERS BUTONLARI */
         .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
-        .sub-btn { padding: 15px; text-align: center; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s; font-weight: 600; color: var(--dark); border-left: 5px solid transparent; }
+        .sub-btn { padding: 15px; text-align: center; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s; font-weight: 600; color: var(--dark); border-left: 5px solid transparent; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .sub-btn:hover { transform: scale(1.05); background: #f9f9f9; }
         .sub-btn.mat { border-color: #e17055; } .sub-btn.fiz { border-color: #0984e3; } .sub-btn.kim { border-color: #6c5ce7; }
         .sub-btn.bio { border-color: #00b894; } .sub-btn.tar { border-color: #fdcb6e; } .sub-btn.cog { border-color: #e84393; } .sub-btn.edb { border-color: #636e72; }
 
-        /* --- MODAL --- */
+        /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
         .modal-content { background: #f8f9fa; width: 95%; max-width: 1200px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #555; z-index: 100; }
 
-        /* --- NOT KARTLARI --- */
+        /* KONU KARTLARI */
         .topic-container { padding: 30px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .topic-group { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .topic-head { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; }
+        .topic-group { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); break-inside: avoid; }
+        .topic-head { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; }
         .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; color: white; background: #b2bec3; }
         .tag.tyt { background: #00b894; } .tag.ayt { background: #fd79a8; }
         .flashcards { display: grid; gap: 10px; }
@@ -68,7 +67,7 @@
         .card h5 { margin: 0 0 5px; color: #d63031; font-size: 0.9rem; }
         .card p { font-size: 0.8rem; color: #555; margin: 0; line-height: 1.4; }
 
-        /* --- OYUN ALANI --- */
+        /* OYUN ALANI */
         #game-modal-content { background: #1a1a1a; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; }
         canvas { background: #000; border: 4px solid #444; border-radius: 8px; margin: 10px 0; }
         .game-controls { margin-top: 10px; display: flex; gap: 20px; font-family: monospace; font-size: 1.2rem; }
@@ -77,9 +76,9 @@
         .btn-play { background: var(--success); color: white; padding: 10px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
         .btn-exit { background: var(--accent); color: white; padding: 10px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
 
-        /* --- CINEBOT (YAPAY ZEKA FİLM ARACI) --- */
+        /* --- CINEBOT STYLES (YENİ) --- */
         .ai-widget-btn {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
             background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 1.8rem; cursor: pointer; box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
@@ -88,8 +87,8 @@
         .ai-widget-btn:hover { transform: scale(1.1); }
         
         .chat-container {
-            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px;
-            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: fixed; bottom: 110px; right: 30px; width: 360px; height: 550px;
+            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);
             z-index: 2999; display: none; flex-direction: column; overflow: hidden;
             border: 1px solid #eee;
         }
@@ -97,29 +96,27 @@
             background: var(--primary); color: white; padding: 15px; font-weight: 600;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .chat-tabs { display: flex; background: #f1f1f1; }
-        .chat-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-size: 0.9rem; transition:0.3s; border-bottom: 2px solid transparent;}
-        .chat-tab.active { background: white; border-bottom: 2px solid var(--primary); color: var(--primary); font-weight: bold; }
+        .chat-tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .chat-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 0.9rem; color: #777; }
+        .chat-tab.active { color: var(--primary); font-weight: bold; border-bottom: 3px solid var(--primary); }
         
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
-        .message { padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 0.9rem; line-height: 1.4; }
-        .bot-msg { background: white; border: 1px solid #eee; align-self: flex-start; border-radius: 0 15px 15px 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .user-msg { background: var(--primary); color: white; align-self: flex-end; border-radius: 15px 0 15px 15px; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #fff; }
+        .msg { padding: 10px 15px; border-radius: 15px; max-width: 85%; font-size: 0.9rem; line-height: 1.4; word-wrap: break-word; }
+        .bot { background: #f1f0f0; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
         
-        .chat-input-area { padding: 10px; background: white; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        .chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 10px; background: #fff; }
         .chat-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
         .chat-send { background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
 
-        /* İzleme Listesi Stili */
-        .watchlist-container { display: none; flex: 1; padding: 15px; overflow-y: auto; background: white; }
-        .watchlist-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
-        .w-title { font-weight: 600; font-size: 0.9rem; }
-        .w-genre { font-size: 0.75rem; color: #888; }
-        .w-remove { color: #ff7675; cursor: pointer; }
+        .movie-card-chat { background: #f8f9fa; border: 1px solid #eee; padding: 10px; border-radius: 8px; margin-top: 5px; }
+        .btn-sm { font-size: 0.8rem; padding: 5px 10px; border-radius: 5px; border:none; cursor: pointer; margin-top: 5px; margin-right: 5px; }
+        .btn-watch { background: #00b894; color: white; width: 100%; margin-bottom: 5px; }
+        .btn-add { background: #fd79a8; color: white; width: 100%; }
 
-        .movie-suggestion-card { margin-top: 10px; background: #f0f3ff; padding: 10px; border-radius: 10px; border: 1px solid #dcdde1; }
-        .add-btn { background: var(--secondary); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-top: 5px; width: 100%; }
-        .add-btn:hover { background: #00b894; }
+        .watchlist-container { display: none; padding: 10px; overflow-y: auto; flex:1; }
+        .w-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .w-remove { color: #ff7675; cursor: pointer; }
 
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -132,7 +129,7 @@
         <div class="nav-links">
             <div class="nav-item" onclick="openNotes()">Ders Notları</div>
             <div class="nav-item" onclick="openGameMenu()">Oyunlar</div>
-            <div class="nav-item" onclick="toggleChat(true)">Film Önerisi</div>
+            <div class="nav-item" onclick="toggleChat(true)">CineBot AI</div>
         </div>
     </nav>
 
@@ -148,34 +145,32 @@
                 <div class="card-icon icon-notes"><i class="fa-solid fa-book-open"></i></div>
                 <div class="card-body">
                     <h3>Ders Notları</h3>
-                    <p>YKS (TYT-AYT) için tüm dersler ve detaylı not kartları burada.</p>
+                    <p>Matematik, Fen, Edebiyat, Tarih ve Coğrafya. YKS (TYT-AYT) için tüm konular ve özel not kartları.</p>
                 </div>
             </div>
-            
             <div class="feature-card" onclick="openGameMenu()">
                 <div class="card-icon icon-games"><i class="fa-solid fa-gamepad"></i></div>
                 <div class="card-body">
                     <h3>Oyunlar</h3>
-                    <p>3D Yılan, Klasik Tetris ve Neon Pacman ile eğlenceye başla.</p>
+                    <p>Mola verme vakti! 3D Yılan, Klasik Tetris ve Neon Pacman ile stres at.</p>
                 </div>
             </div>
-
             <div class="feature-card" onclick="toggleChat(true)">
                 <div class="card-icon icon-movies"><i class="fa-solid fa-robot"></i></div>
                 <div class="card-body">
                     <h3>CineBot AI</h3>
-                    <p>Yapay zekadan film önerisi al ve izleme listeni oluştur.</p>
+                    <p>Yapay zekadan film önerisi al, izleme listeni yap ve direkt sitede izle.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="ai-widget-btn" onclick="toggleChat()"><i class="fa-solid fa-comment-dots"></i></div>
-    
+
     <div id="cineBot" class="chat-container">
         <div class="chat-header">
-            <span><i class="fa-solid fa-robot"></i> CineBot Asistan</span>
-            <span style="cursor:pointer;" onclick="toggleChat()">&times;</span>
+            <span><i class="fa-solid fa-film"></i> CineBot</span>
+            <span style="cursor:pointer" onclick="toggleChat()">&times;</span>
         </div>
         <div class="chat-tabs">
             <div class="chat-tab active" onclick="switchTab('chat')">Sohbet</div>
@@ -183,15 +178,16 @@
         </div>
         
         <div id="chatView" class="chat-body">
-            <div class="message bot-msg">Merhaba Aleyna! Ben CineBot. Sana film önermemi ister misin? (Örn: "Bilim kurgu öner", "Komedi filmi var mı?")</div>
+            <div class="msg bot">Merhaba Aleyna! Ben CineBot. fullhdfilmizlesene.tv arşivinden karışık film önerebilirim. Bir tür yaz (Örn: Aksiyon, Korku, Bilim Kurgu).</div>
         </div>
+        
         <div id="chatInputArea" class="chat-input-area">
-            <input type="text" id="userInput" class="chat-input" placeholder="Bir tür yazın..." onkeypress="handleEnter(event)">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Tür yazın..." onkeypress="handleEnter(event)">
             <button class="chat-send" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
 
         <div id="listView" class="watchlist-container">
-            <p style="text-align:center; color:#999; font-size:0.9rem;">Henüz listene film eklemedin.</p>
+            <p style="text-align:center; color:#999; margin-top:20px;">Listeniz boş.</p>
         </div>
     </div>
 
@@ -221,9 +217,9 @@
             <span class="close-btn" onclick="closeModal('gamesMenuModal')">&times;</span>
             <h2>Oyun Seç</h2>
             <div style="display: grid; gap: 15px; margin-top: 20px;">
-                <button class="btn-play" style="background:#6c5ce7; width:100%;" onclick="initGame('snake')">🐍 Yılan</button>
-                <button class="btn-play" style="background:#0984e3; width:100%;" onclick="initGame('tetris')">🧱 Tetris</button>
-                <button class="btn-play" style="background:#fd79a8; width:100%;" onclick="initGame('pacman')">👻 Pacman</button>
+                <button class="btn-play" style="background:#6c5ce7; width:100%;" onclick="initGame('snake')">🐍 Yılan (3D)</button>
+                <button class="btn-play" style="background:#0984e3; width:100%;" onclick="initGame('tetris')">🧱 Tetris (Klasik)</button>
+                <button class="btn-play" style="background:#fd79a8; width:100%;" onclick="initGame('pacman')">👻 Pacman (Neon)</button>
             </div>
         </div>
     </div>
@@ -254,134 +250,136 @@
     </div>
 
     <script>
-        // --- CINEBOT VERİTABANI VE MANTIĞI ---
-        const movieDB = [
-            { t: "Interstellar", g: ["bilim kurgu", "uzay", "dram"], d: "İnsanlığın yok olma tehlikesiyle karşı karşıya olduğu bir gelecekte, bir grup astronotun yaşanabilir yeni bir gezegen bulmak için solucan deliğinden geçişini anlatır." },
-            { t: "Inception", g: ["bilim kurgu", "aksiyon", "gizem"], d: "Rüyaların içine girerek insanların sırlarını çalan bir hırsızın, bu sefer bir fikri birinin zihnine yerleştirmesi (inception) görevini konu alır." },
-            { t: "The Imitation Game", g: ["dram", "biyografi", "tarih", "matematik"], d: "Matematikçi Alan Turing'in, 2. Dünya Savaşı sırasında Almanların Enigma kodunu çözme çabasını anlatır." },
-            { t: "A Beautiful Mind", g: ["dram", "biyografi", "matematik"], d: "Nobel ödüllü matematikçi John Nash'in şizofreni ile mücadelesini ve oyun teorisi üzerindeki çalışmalarını konu alır." },
-            { t: "The Godfather", g: ["suç", "dram", "mafya"], d: "İtalyan-Amerikan bir suç ailesinin lideri Don Vito Corleone'nin, imparatorluğunu oğluna devretme sürecini anlatan bir başyapıt." },
-            { t: "Parasite", g: ["gerilim", "komedi", "dram"], d: "Fakir bir ailenin, zengin bir ailenin evine sızarak hayatlarını değiştirmeye çalışmasını konu alan ödüllü bir film." },
-            { t: "The Matrix", g: ["bilim kurgu", "aksiyon"], d: "Bir bilgisayar korsanının, yaşadığı dünyanın aslında makineler tarafından yaratılmış bir simülasyon olduğunu keşfetmesini anlatır." },
-            { t: "Forrest Gump", g: ["dram", "romantik", "komedi"], d: "Düşük IQ'ya sahip ama iyi kalpli Forrest Gump'ın, ABD tarihinin önemli olaylarına tanıklık ettiği hayat hikayesi." },
-            { t: "Moneyball", g: ["spor", "dram", "veri"], d: "Bir beyzbol takımı yöneticisinin, istatistiksel verileri kullanarak kısıtlı bütçeyle rekabetçi bir takım kurma hikayesi." },
-            { t: "The Hangover", g: ["komedi", "macera"], d: "Bekarlığa veda partisi için Las Vegas'a giden arkadaşların, sabah hiçbir şey hatırlamadan uyanıp damadı aramalarını anlatır." },
-            { t: "The Conjuring", g: ["korku", "gerilim"], d: "Paranormal araştırmacıların, perili bir çiftlik evinde yaşayan bir aileye yardım etmesini konu alan ürkütücü bir film." },
-            { t: "Avengers: Endgame", g: ["aksiyon", "macera", "süper kahraman"], d: "Yenilmezler'in, Thanos'un evrenin yarısını yok etmesinden sonra her şeyi düzeltmek için son bir savaşa girmesini anlatır." }
+        // --- CINEBOT VERİTABANI (SİMÜLASYON) ---
+        // fullhdfilmizlesene.tv'deki popüler filmler
+        const movies = [
+            {t:"Oppenheimer", g:["biyografi","dram","tarih"], d:"Atom bombasının babası Robert Oppenheimer'ın hayatı."},
+            {t:"Barbie", g:["komedi","macera"], d:"Barbie diyarından gerçek dünyaya yolculuk."},
+            {t:"John Wick 4", g:["aksiyon","suç"], d:"John Wick'in Yüksek Şura'ya karşı savaşı."},
+            {t:"Interstellar", g:["bilim kurgu","macera"], d:"İnsanlığın kurtuluşu için solucan deliğinden geçiş."},
+            {t:"Inception", g:["bilim kurgu","aksiyon"], d:"Rüyalara girip fikir çalan bir hırsızın hikayesi."},
+            {t:"The Dark Knight", g:["aksiyon","suç"], d:"Batman ve Joker'in kaotik savaşı."},
+            {t:"Avatar: The Way of Water", g:["bilim kurgu","macera"], d:"Pandora gezegeninde yeni bir savaş."},
+            {t:"Spider-Man: Across the Spider-Verse", g:["animasyon","aksiyon"], d:"Miles Morales'in çoklu evren macerası."},
+            {t:"The Godfather", g:["suç","dram"], d:"Mafya babası Vito Corleone ve ailesi."},
+            {t:"Avengers: Endgame", g:["aksiyon","bilim kurgu"], d:"Yenilmezler'in Thanos'a karşı son savaşı."},
+            {t:"Joker", g:["dram","suç"], d:"Arthur Fleck'in Joker'e dönüşümü."},
+            {t:"Parasite", g:["gerilim","dram"], d:"Fakir bir ailenin zengin bir ailenin hayatına sızması."},
+            {t:"Dune", g:["bilim kurgu","macera"], d:"Çöl gezegeni Arrakis'te geçen güç savaşı."},
+            {t:"Top Gun: Maverick", g:["aksiyon","dram"], d:"Efsane pilot Maverick'in geri dönüşü."},
+            {t:"The Matrix", g:["bilim kurgu","aksiyon"], d:"Gerçeğin bir simülasyon olduğunu keşfeden Neo."},
+            {t:"Fight Club", g:["dram"], d:"Yeraltı dövüş kulübü kuran bir adamın hikayesi."},
+            {t:"Forrest Gump", g:["dram","romantik"], d:"Düşük IQ'lu Forrest'ın inanılmaz hayatı."},
+            {t:"The Wolf of Wall Street", g:["biyografi","komedi"], d:"Borsacı Jordan Belfort'un yükselişi ve çöküşü."},
+            {t:"Gladiator", g:["aksiyon","tarih"], d:"İhanete uğrayan generalin köle olarak intikamı."},
+            {t:"Titanic", g:["romantik","dram"], d:"Batmaz denilen gemide yaşanan büyük aşk."},
+            {t:"The Conjuring", g:["korku"], d:"Paranormal olayları araştıran çiftin vakası."},
+            {t:"It", g:["korku"], d:"Palyaço Pennywise'ın dehşeti."},
+            {t:"Saw X", g:["korku","gerilim"], d:"Jigsaw'ın kişisel intikam oyunu."},
+            {t:"Talk to Me", g:["korku"], d:"Ruh çağıran gençlerin başına gelenler."},
+            {t:"Five Nights at Freddy's", g:["korku"], d:"Perili bir pizzacıda gece bekçiliği."},
+            {t:"Mission: Impossible - Dead Reckoning", g:["aksiyon"], d:"Ethan Hunt'ın en tehlikeli görevi."},
+            {t:"Guardians of the Galaxy Vol. 3", g:["aksiyon","bilim kurgu","komedi"], d:"Galaksinin koruyucularının son macerası."},
+            {t:"Fast X", g:["aksiyon","suç"], d:"Dom Toretto ve ailesinin yeni düşmanı."},
+            {t:"The Super Mario Bros. Movie", g:["animasyon","macera"], d:"Mario ve Luigi'nin mantar krallığı macerası."},
+            {t:"Coco", g:["animasyon"], d:"Ölüler diyarına yolculuk."},
+            {t:"Toy Story", g:["animasyon"], d:"Oyuncakların gizli dünyası."}
         ];
 
-        let watchlist = JSON.parse(localStorage.getItem('aleWatchlist')) || [];
+        let watchList = JSON.parse(localStorage.getItem('aleynaWatchlist')) || [];
 
-        function toggleChat(forceOpen = false) {
+        function toggleChat(forceOpen){
             const chat = document.getElementById('cineBot');
-            if(forceOpen) { chat.style.display = 'flex'; }
-            else { chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex'; }
-            updateWatchlistUI();
+            if(forceOpen) chat.style.display='flex';
+            else chat.style.display = chat.style.display==='flex'?'none':'flex';
+            renderWatchlist();
         }
 
-        function switchTab(tab) {
-            document.querySelectorAll('.chat-tab').forEach(t => t.classList.remove('active'));
-            if(tab === 'chat') {
+        function switchTab(tab){
+            document.querySelectorAll('.chat-tab').forEach(t=>t.classList.remove('active'));
+            if(tab==='chat'){
                 document.querySelector('.chat-tab:nth-child(1)').classList.add('active');
-                document.getElementById('chatView').style.display = 'flex';
-                document.getElementById('chatInputArea').style.display = 'flex';
-                document.getElementById('listView').style.display = 'none';
-            } else {
+                document.getElementById('chatView').style.display='flex';
+                document.getElementById('chatInputArea').style.display='flex';
+                document.getElementById('listView').style.display='none';
+            }else{
                 document.querySelector('.chat-tab:nth-child(2)').classList.add('active');
-                document.getElementById('chatView').style.display = 'none';
-                document.getElementById('chatInputArea').style.display = 'none';
-                document.getElementById('listView').style.display = 'block';
-                updateWatchlistUI();
+                document.getElementById('chatView').style.display='none';
+                document.getElementById('chatInputArea').style.display='none';
+                document.getElementById('listView').style.display='block';
+                renderWatchlist();
             }
         }
 
-        function handleEnter(e) { if(e.key === 'Enter') sendMessage(); }
+        function handleEnter(e){ if(e.key==='Enter') sendMessage(); }
 
-        function sendMessage() {
-            const input = document.getElementById('userInput');
-            const msg = input.value.trim().toLowerCase();
-            if(!msg) return;
+        function sendMessage(){
+            const inp = document.getElementById('chatInput');
+            const txt = inp.value.trim().toLowerCase();
+            if(!txt) return;
+            
+            addMsg(inp.value, 'user');
+            inp.value = '';
 
-            addMsg(input.value, 'user');
-            input.value = '';
-
-            setTimeout(() => {
-                let response = "";
-                let suggestedMovie = null;
-
-                if(msg.includes('merhaba') || msg.includes('selam')) {
-                    response = "Merhaba! Hangi türde film önerisi istersin? (Bilim kurgu, Dram, Komedi, Korku vb.)";
-                } else if(msg.includes('listem') || msg.includes('izleme')) {
-                    response = "İzleme listene 'İzleme Listem' sekmesinden ulaşabilirsin.";
+            setTimeout(()=>{
+                const matches = movies.filter(m => m.g.some(g => txt.includes(g)));
+                if(matches.length > 0){
+                    const movie = matches[Math.floor(Math.random()*matches.length)];
+                    // Link oluşturma: fullhdfilmizlesene.tv/arama/film-adi
+                    const searchLink = `https://www.fullhdfilmizlesene.tv/arama/${encodeURIComponent(movie.t)}`;
+                    
+                    const html = `Sana önerim: <b>${movie.t}</b><br><br>${movie.d}<br>
+                    <div class="movie-card-chat">
+                        <button class="btn-sm btn-watch" onclick="window.open('${searchLink}','_blank')"><i class="fa-solid fa-play"></i> Sitede İzle</button>
+                        <button class="btn-sm btn-add" onclick="addToWatchlist('${movie.t}')"><i class="fa-solid fa-plus"></i> Listeme Ekle</button>
+                    </div>`;
+                    addMsg(html, 'bot');
                 } else {
-                    // Basit kelime eşleştirme
-                    const matches = movieDB.filter(m => m.g.some(g => msg.includes(g)));
-                    if(matches.length > 0) {
-                        suggestedMovie = matches[Math.floor(Math.random() * matches.length)];
-                        response = `Sana <b>${suggestedMovie.t}</b> filmini öneririm.<br><br><b>Konusu:</b> ${suggestedMovie.d}`;
-                    } else {
-                        response = "Üzgünüm, bu türde bir film bulamadım. Başka bir tür dener misin? (Örn: Aksiyon, Veri, Matematik)";
-                    }
+                    addMsg("Üzgünüm, bu türde bir film bulamadım. Başka bir tür dener misin? (Örn: Aksiyon, Korku, Dram)", 'bot');
                 }
-
-                addMsg(response, 'bot', suggestedMovie);
             }, 600);
         }
 
-        function addMsg(text, sender, movie = null) {
-            const chatView = document.getElementById('chatView');
-            const div = document.createElement('div');
-            div.className = `message ${sender}-msg`;
-            div.innerHTML = text;
-            chatView.appendChild(div);
-
-            if(movie) {
-                const suggDiv = document.createElement('div');
-                suggDiv.className = 'movie-suggestion-card';
-                suggDiv.innerHTML = `<button class="add-btn" onclick="addToWatchlist('${movie.t}', '${movie.g[0]}')"><i class="fa-solid fa-plus"></i> Listeme Ekle</button>`;
-                chatView.appendChild(suggDiv);
-            }
-            chatView.scrollTop = chatView.scrollHeight;
+        function addMsg(html, type){
+            const box = document.getElementById('chatView');
+            const d = document.createElement('div');
+            d.className = `msg ${type}`;
+            d.innerHTML = html;
+            box.appendChild(d);
+            box.scrollTop = box.scrollHeight;
         }
 
-        function addToWatchlist(title, genre) {
-            if(!watchlist.some(m => m.title === title)) {
-                watchlist.push({ title, genre });
-                localStorage.setItem('aleWatchlist', JSON.stringify(watchlist));
-                alert(`${title} listene eklendi!`);
-                updateWatchlistUI();
-            } else {
-                alert("Bu film zaten listende var.");
-            }
+        function addToWatchlist(title){
+            if(!watchList.includes(title)){
+                watchList.push(title);
+                localStorage.setItem('aleynaWatchlist', JSON.stringify(watchList));
+                alert("Eklendi!");
+            } else alert("Zaten listede.");
         }
 
-        function removeFromWatchlist(index) {
-            watchlist.splice(index, 1);
-            localStorage.setItem('aleWatchlist', JSON.stringify(watchlist));
-            updateWatchlistUI();
-        }
-
-        function updateWatchlistUI() {
-            const container = document.getElementById('listView');
-            if(watchlist.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#999; margin-top:20px;">Listen boş. CineBot\'tan öneri iste!</p>';
-                return;
-            }
-            container.innerHTML = watchlist.map((m, i) => `
-                <div class="watchlist-item">
-                    <div>
-                        <div class="w-title">${m.title}</div>
-                        <div class="w-genre">${m.genre}</div>
+        function renderWatchlist(){
+            const div = document.getElementById('listView');
+            if(watchList.length===0) div.innerHTML='<p style="text-align:center;color:#999;margin-top:20px;">Listeniz boş.</p>';
+            else {
+                div.innerHTML = watchList.map((m,i)=>`
+                    <div class="w-item">
+                        <span>${m}</span>
+                        <span class="w-remove" onclick="removeWatch(${i})"><i class="fa-solid fa-trash"></i></span>
                     </div>
-                    <div class="w-remove" onclick="removeFromWatchlist(${i})"><i class="fa-solid fa-trash"></i></div>
-                </div>
-            `).join('');
+                `).join('');
+            }
+        }
+
+        function removeWatch(i){
+            watchList.splice(i,1);
+            localStorage.setItem('aleynaWatchlist', JSON.stringify(watchList));
+            renderWatchlist();
         }
 
         // --- MÜFREDAT VERİTABANI ---
         const curriculum = {
             "Matematik": [
-                { t: "Temel Kavramlar", tag: "TYT", c: [{h:"Rakam",t:"{0..9}"},{h:"Asal",t:"Sadece 1'e bölünür."}] },
+                { t: "Temel Kavramlar", tag: "TYT", c: [{h:"Rakam",t:"{0..9} kümesi."},{h:"Asal",t:"Sadece 1'e bölünür."}] },
                 { t: "Üslü Sayılar", tag: "TYT", c: [{h:"Çarpma",t:"Tabanlar aynıysa üsler toplanır."}] },
                 { t: "Fonksiyonlar", tag: "TYT-AYT", c: [{h:"Birebir",t:"Her eleman farklı yere gider."}] },
                 { t: "Türev", tag: "AYT", c: [{h:"Anlamı",t:"Teğetin eğimidir."}] },
@@ -468,7 +466,7 @@
             function drawN(){nextCtx.fillStyle="#222";nextCtx.fillRect(0,0,80,80);np.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){nextCtx.fillStyle=np.c;nextCtx.fillRect((x+1)*15,(y+1)*15,15,15)}}));}
             function coll(x,y,s){return s.some((r,dy)=>r.some((v,dx)=>v&&(p.y+dy+y>=R||p.x+dx+x<0||p.x+dx+x>=C||(p.y+dy+y>=0&&board[p.y+dy+y][p.x+dx+x]!="BLACK"))));}
             function move(){if(!coll(0,1,p.s))p.y++;else{p.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){if(p.y+y<0)gameOver(false);else board[p.y+y][p.x+x]=p.c}}));for(let r=0;r<R;r++)if(board[r].every(c=>c!="BLACK")){board.splice(r,1);board.unshift(Array(C).fill("BLACK"));score+=100;}p=np;np=newP();drawN();}draw();updateUI();}
-            document.onkeydown=e=>{if(activeGame==='tetris'){if(e.key=="ArrowLeft"&&!coll(-1,0,p.s))p.x--;if(e.key=="ArrowRight"&&!coll(1,0,p.s))p.x++;if(e.key=="ArrowDown")move();if(e.key=="ArrowUp"){let rot=p.s[0].map((_,i)=>p.s.map(row=>row[i]).reverse());if(!coll(0,0,rot))p.s=rot;}}}
+            document.onkeydown=e=>{if(activeGame==='tetris'){if(e.key=="ArrowLeft"&&!coll(-1,0,p.s))p.x--;if(e.key=="ArrowRight"&&!coll(1,0,p.s))p.x++;if(e.key=="ArrowDown")move();if(e.key==="ArrowUp"){let rot=p.s[0].map((_,i)=>p.s.map(row=>row[i]).reverse());if(!coll(0,0,rot))p.s=rot;}}}
             gameInterval=setInterval(move, 500);
         }
 
