@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aleyna Korkmaz | YKS Rehberi & Oyunlar</title>
+    <title>Aleyna Korkmaz | YKS & CineBot</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,49 +14,27 @@
             --dark: #2d3436;
             --light: #dfe6e9;
             --bg-grad: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --chat-bg: #ffffff;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0; padding: 0;
-            background: var(--bg-grad);
-            color: var(--dark);
-            min-height: 100vh;
-        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: var(--bg-grad); color: var(--dark); min-height: 100vh; }
 
-        /* NAVİGASYON */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
-        }
+        /* --- NAVİGASYON --- */
+        nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); cursor: pointer; }
         .nav-links { display: flex; gap: 30px; }
         .nav-item { cursor: pointer; font-weight: 600; transition: 0.3s; color: var(--dark); }
         .nav-item:hover { color: var(--primary); }
 
-        /* HERO */
-        header.hero {
-            text-align: center; padding: 60px 20px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; border-radius: 0 0 40px 40px;
-            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
-            margin-bottom: 40px;
-        }
+        /* --- HERO --- */
+        header.hero { text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 40px; }
         .hero h1 { font-size: 3rem; margin: 0; font-weight: 800; }
         .tagline { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-top: 10px; display: inline-block; }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
 
-        /* ANA SAYFA KARTLARI */
+        /* --- HOME GRID --- */
         .home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-card {
-            background: white; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s;
-            cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
-        }
+        .feature-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
         .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .card-icon { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
         .icon-notes { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
@@ -66,50 +44,31 @@
         .card-body h3 { margin: 0 0 10px; color: var(--dark); font-size: 1.5rem; }
         .card-body p { color: #777; font-size: 0.9rem; margin: 0; }
 
-        /* DERS BUTONLARI */
+        /* --- DERS DETAYLARI --- */
         .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
-        .sub-btn {
-            padding: 15px; text-align: center; background: white; border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s;
-            font-weight: 600; color: var(--dark); border-left: 5px solid transparent; display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
+        .sub-btn { padding: 15px; text-align: center; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s; font-weight: 600; color: var(--dark); border-left: 5px solid transparent; }
         .sub-btn:hover { transform: scale(1.05); background: #f9f9f9; }
-        .sub-btn.mat { border-color: #e17055; } .sub-btn.fiz { border-color: #0984e3; }
-        .sub-btn.kim { border-color: #6c5ce7; } .sub-btn.bio { border-color: #00b894; }
-        .sub-btn.tar { border-color: #fdcb6e; } .sub-btn.cog { border-color: #e84393; }
-        .sub-btn.edb { border-color: #636e72; }
+        .sub-btn.mat { border-color: #e17055; } .sub-btn.fiz { border-color: #0984e3; } .sub-btn.kim { border-color: #6c5ce7; }
+        .sub-btn.bio { border-color: #00b894; } .sub-btn.tar { border-color: #fdcb6e; } .sub-btn.cog { border-color: #e84393; } .sub-btn.edb { border-color: #636e72; }
 
-        /* MODAL */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
-            z-index: 2000; justify-content: center; align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-        .modal-content {
-            background: #f8f9fa; width: 95%; max-width: 1200px; max-height: 90vh;
-            border-radius: 20px; overflow-y: auto; position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column;
-        }
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
+        .modal-content { background: #f8f9fa; width: 95%; max-width: 1200px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #555; z-index: 100; }
 
-        /* KONU KARTLARI */
+        /* --- NOT KARTLARI --- */
         .topic-container { padding: 30px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .topic-group { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); break-inside: avoid; }
-        .topic-head { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; }
+        .topic-group { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .topic-head { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; }
         .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; color: white; background: #b2bec3; }
         .tag.tyt { background: #00b894; } .tag.ayt { background: #fd79a8; }
-        
         .flashcards { display: grid; gap: 10px; }
-        .card {
-            background: #fdfdfd; border: 1px solid #f0f0f0; padding: 12px; border-radius: 8px;
-            border-left: 4px solid var(--secondary); transition: 0.2s;
-        }
+        .card { background: #fdfdfd; border: 1px solid #f0f0f0; padding: 12px; border-radius: 8px; border-left: 4px solid var(--secondary); transition: 0.2s; }
         .card:hover { transform: translateX(5px); background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .card h5 { margin: 0 0 5px; color: #d63031; font-size: 0.9rem; }
         .card p { font-size: 0.8rem; color: #555; margin: 0; line-height: 1.4; }
 
-        /* OYUN ALANI */
+        /* --- OYUN ALANI --- */
         #game-modal-content { background: #1a1a1a; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; }
         canvas { background: #000; border: 4px solid #444; border-radius: 8px; margin: 10px 0; }
         .game-controls { margin-top: 10px; display: flex; gap: 20px; font-family: monospace; font-size: 1.2rem; }
@@ -118,6 +77,51 @@
         .btn-play { background: var(--success); color: white; padding: 10px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
         .btn-exit { background: var(--accent); color: white; padding: 10px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
 
+        /* --- CINEBOT (YAPAY ZEKA FİLM ARACI) --- */
+        .ai-widget-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; cursor: pointer; box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+            z-index: 3000; transition: 0.3s; animation: pulse 2s infinite;
+        }
+        .ai-widget-btn:hover { transform: scale(1.1); }
+        
+        .chat-container {
+            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px;
+            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            z-index: 2999; display: none; flex-direction: column; overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .chat-header {
+            background: var(--primary); color: white; padding: 15px; font-weight: 600;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .chat-tabs { display: flex; background: #f1f1f1; }
+        .chat-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-size: 0.9rem; transition:0.3s; border-bottom: 2px solid transparent;}
+        .chat-tab.active { background: white; border-bottom: 2px solid var(--primary); color: var(--primary); font-weight: bold; }
+        
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
+        .message { padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 0.9rem; line-height: 1.4; }
+        .bot-msg { background: white; border: 1px solid #eee; align-self: flex-start; border-radius: 0 15px 15px 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .user-msg { background: var(--primary); color: white; align-self: flex-end; border-radius: 15px 0 15px 15px; }
+        
+        .chat-input-area { padding: 10px; background: white; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        .chat-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        .chat-send { background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        /* İzleme Listesi Stili */
+        .watchlist-container { display: none; flex: 1; padding: 15px; overflow-y: auto; background: white; }
+        .watchlist-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+        .w-title { font-weight: 600; font-size: 0.9rem; }
+        .w-genre { font-size: 0.75rem; color: #888; }
+        .w-remove { color: #ff7675; cursor: pointer; }
+
+        .movie-suggestion-card { margin-top: 10px; background: #f0f3ff; padding: 10px; border-radius: 10px; border: 1px solid #dcdde1; }
+        .add-btn { background: var(--secondary); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-top: 5px; width: 100%; }
+        .add-btn:hover { background: #00b894; }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -128,7 +132,7 @@
         <div class="nav-links">
             <div class="nav-item" onclick="openNotes()">Ders Notları</div>
             <div class="nav-item" onclick="openGameMenu()">Oyunlar</div>
-            <div class="nav-item" onclick="openMovies()">Filmler</div>
+            <div class="nav-item" onclick="toggleChat(true)">Film Önerisi</div>
         </div>
     </nav>
 
@@ -144,23 +148,50 @@
                 <div class="card-icon icon-notes"><i class="fa-solid fa-book-open"></i></div>
                 <div class="card-body">
                     <h3>Ders Notları</h3>
-                    <p>Matematik, Fen, Edebiyat, Tarih ve Coğrafya. YKS (TYT-AYT) için tüm konular ve özel not kartları.</p>
+                    <p>YKS (TYT-AYT) için tüm dersler ve detaylı not kartları burada.</p>
                 </div>
             </div>
+            
             <div class="feature-card" onclick="openGameMenu()">
                 <div class="card-icon icon-games"><i class="fa-solid fa-gamepad"></i></div>
                 <div class="card-body">
                     <h3>Oyunlar</h3>
-                    <p>Mola verme vakti! 3D Yılan, Klasik Tetris ve Neon Pacman ile stres at.</p>
+                    <p>3D Yılan, Klasik Tetris ve Neon Pacman ile eğlenceye başla.</p>
                 </div>
             </div>
-            <div class="feature-card" onclick="openMovies()">
-                <div class="card-icon icon-movies"><i class="fa-solid fa-film"></i></div>
+
+            <div class="feature-card" onclick="toggleChat(true)">
+                <div class="card-icon icon-movies"><i class="fa-solid fa-robot"></i></div>
                 <div class="card-body">
-                    <h3>Film Önerileri</h3>
-                    <p>İlham veren, ufuk açan ve dinlendiren film listesine göz at.</p>
+                    <h3>CineBot AI</h3>
+                    <p>Yapay zekadan film önerisi al ve izleme listeni oluştur.</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="ai-widget-btn" onclick="toggleChat()"><i class="fa-solid fa-comment-dots"></i></div>
+    
+    <div id="cineBot" class="chat-container">
+        <div class="chat-header">
+            <span><i class="fa-solid fa-robot"></i> CineBot Asistan</span>
+            <span style="cursor:pointer;" onclick="toggleChat()">&times;</span>
+        </div>
+        <div class="chat-tabs">
+            <div class="chat-tab active" onclick="switchTab('chat')">Sohbet</div>
+            <div class="chat-tab" onclick="switchTab('list')">İzleme Listem</div>
+        </div>
+        
+        <div id="chatView" class="chat-body">
+            <div class="message bot-msg">Merhaba Aleyna! Ben CineBot. Sana film önermemi ister misin? (Örn: "Bilim kurgu öner", "Komedi filmi var mı?")</div>
+        </div>
+        <div id="chatInputArea" class="chat-input-area">
+            <input type="text" id="userInput" class="chat-input" placeholder="Bir tür yazın..." onkeypress="handleEnter(event)">
+            <button class="chat-send" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
+        <div id="listView" class="watchlist-container">
+            <p style="text-align:center; color:#999; font-size:0.9rem;">Henüz listene film eklemedin.</p>
         </div>
     </div>
 
@@ -170,19 +201,17 @@
             <div style="padding: 30px;">
                 <h2 style="text-align: center; margin-bottom: 20px;">Ders Seçiniz</h2>
                 <div class="subject-grid">
-                    <div class="sub-btn mat" onclick="loadSubject('Matematik')"><i class="fa-solid fa-calculator"></i> Matematik</div>
-                    <div class="sub-btn fiz" onclick="loadSubject('Fizik')"><i class="fa-solid fa-atom"></i> Fizik</div>
-                    <div class="sub-btn kim" onclick="loadSubject('Kimya')"><i class="fa-solid fa-flask"></i> Kimya</div>
-                    <div class="sub-btn bio" onclick="loadSubject('Biyoloji')"><i class="fa-solid fa-dna"></i> Biyoloji</div>
-                    <div class="sub-btn tar" onclick="loadSubject('Tarih')"><i class="fa-solid fa-landmark"></i> Tarih</div>
-                    <div class="sub-btn cog" onclick="loadSubject('Coğrafya')"><i class="fa-solid fa-globe"></i> Coğrafya</div>
-                    <div class="sub-btn edb" onclick="loadSubject('Edebiyat')"><i class="fa-solid fa-feather"></i> Edebiyat</div>
+                    <div class="sub-btn mat" onclick="loadSubject('Matematik')">Matematik</div>
+                    <div class="sub-btn fiz" onclick="loadSubject('Fizik')">Fizik</div>
+                    <div class="sub-btn kim" onclick="loadSubject('Kimya')">Kimya</div>
+                    <div class="sub-btn bio" onclick="loadSubject('Biyoloji')">Biyoloji</div>
+                    <div class="sub-btn tar" onclick="loadSubject('Tarih')">Tarih</div>
+                    <div class="sub-btn cog" onclick="loadSubject('Coğrafya')">Coğrafya</div>
+                    <div class="sub-btn edb" onclick="loadSubject('Edebiyat')">Edebiyat</div>
                 </div>
                 <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
                 <h2 id="subjectTitle" style="color: var(--primary);">Konular</h2>
-                <div id="topicContainer" class="topic-container">
-                    <p style="text-align:center; color:#999;">Bir ders seçtiğinizde tüm müfredat burada listelenecek.</p>
-                </div>
+                <div id="topicContainer" class="topic-container"></div>
             </div>
         </div>
     </div>
@@ -192,9 +221,9 @@
             <span class="close-btn" onclick="closeModal('gamesMenuModal')">&times;</span>
             <h2>Oyun Seç</h2>
             <div style="display: grid; gap: 15px; margin-top: 20px;">
-                <button class="btn-play" style="background:#6c5ce7; width:100%;" onclick="initGame('snake')">🐍 Yılan (3D)</button>
-                <button class="btn-play" style="background:#0984e3; width:100%;" onclick="initGame('tetris')">🧱 Tetris (Klasik)</button>
-                <button class="btn-play" style="background:#fd79a8; width:100%;" onclick="initGame('pacman')">👻 Pacman (Neon)</button>
+                <button class="btn-play" style="background:#6c5ce7; width:100%;" onclick="initGame('snake')">🐍 Yılan</button>
+                <button class="btn-play" style="background:#0984e3; width:100%;" onclick="initGame('tetris')">🧱 Tetris</button>
+                <button class="btn-play" style="background:#fd79a8; width:100%;" onclick="initGame('pacman')">👻 Pacman</button>
             </div>
         </div>
     </div>
@@ -225,260 +254,248 @@
     </div>
 
     <script>
-        // --- TAM KAPSAMLI YKS MÜFREDATI (TÜM DERSLER DAHİL) ---
-        const curriculum = {
-            "Matematik": [
-                { t: "Temel Kavramlar", tag: "TYT", c: [{h:"Rakam",t:"{0..9} kümesi."},{h:"Asal",t:"Sadece 1'e ve kendine bölünür."}] },
-                { t: "Sayı Basamakları", tag: "TYT", c: [{h:"Çözümleme",t:"ab = 10a + b"}] },
-                { t: "Bölme-Bölünebilme", tag: "TYT", c: [{h:"3 ile",t:"Rakamlar toplamı 3k."},{h:"5 ile",t:"Son basamak 0 veya 5."}] },
-                { t: "EBOB-EKOK", tag: "TYT", c: [{h:"EBOB",t:"En büyük ortak bölen."},{h:"Kural",t:"EBOB.EKOK = a.b"}] },
-                { t: "Rasyonel Sayılar", tag: "TYT", c: [{h:"Tanım",t:"a/b, b≠0."}] },
-                { t: "Mutlak Değer", tag: "TYT", c: [{h:"Tanım",t:"|x| ≥ 0. Uzaklık belirtir."}] },
-                { t: "Üslü Sayılar", tag: "TYT", c: [{h:"Çarpma",t:"Tabanlar aynıysa üsler toplanır."}] },
-                { t: "Köklü Sayılar", tag: "TYT", c: [{h:"Tanım",t:"Üslü ifadenin tersi."}] },
-                { t: "Çarpanlara Ayırma", tag: "TYT", c: [{h:"Tam Kare",t:"(a+b)² = a²+2ab+b²"}] },
-                { t: "Problemler", tag: "TYT", c: [{h:"Hız",t:"x = v.t"},{h:"Yüzde",t:"(Sayı x Yüzde)/100"}] },
-                { t: "Kümeler", tag: "TYT", c: [{h:"Alt Küme",t:"2^n"}] },
-                { t: "Fonksiyonlar", tag: "TYT-AYT", c: [{h:"Birebir",t:"Her x farklı y'ye gider."}] },
-                { t: "Polinomlar", tag: "AYT", c: [{h:"Kalan",t:"P(a) değeridir."}] },
-                { t: "2. Derece Denklemler", tag: "AYT", c: [{h:"Diskriminant",t:"b²-4ac"}] },
-                { t: "Parabol", tag: "AYT", c: [{h:"Tepe",t:"r=-b/2a"}] },
-                { t: "Trigonometri", tag: "AYT", c: [{h:"Sinüs",t:"Karşı/Hipotenüs"}] },
-                { t: "Logaritma", tag: "AYT", c: [{h:"Kural",t:"a^x=b ise x=log_a(b)"}] },
-                { t: "Limit", tag: "AYT", c: [{h:"Belirsizlik",t:"0/0 da L'Hospital."}] },
-                { t: "Türev", tag: "AYT", c: [{h:"Anlamı",t:"Teğetin eğimidir."}] },
-                { t: "İntegral", tag: "AYT", c: [{h:"Belirli",t:"Eğri altındaki alan."}] }
-            ],
-            "Fizik": [
-                { t: "Fizik Bilimine Giriş", tag: "TYT", c: [{h:"Büyüklükler",t:"Temel (Kısa Muz) ve Türetilmiş."}] },
-                { t: "Madde ve Özellikleri", tag: "TYT", c: [{h:"Özkütle",t:"d=m/V"}] },
-                { t: "Hareket ve Kuvvet", tag: "TYT", c: [{h:"Hız",t:"Yer değiştirme/Zaman"}] },
-                { t: "Enerji", tag: "TYT", c: [{h:"Kinetik",t:"1/2.m.v²"},{h:"Potansiyel",t:"m.g.h"}] },
-                { t: "Isı ve Sıcaklık", tag: "TYT", c: [{h:"Özısı",t:"Q=mcΔT"}] },
-                { t: "Elektrostatik", tag: "TYT", c: [{h:"Coulomb",t:"F=k.q1.q2/d²"}] },
-                { t: "Optik", tag: "TYT", c: [{h:"Yansıma",t:"Gelme açısı yansımaya eşittir."}] },
-                { t: "Vektörler", tag: "AYT", c: [{h:"Bileşke",t:"Uç uca ekleme."}] },
-                { t: "Newton'un Yasaları", tag: "AYT", c: [{h:"F=ma",t:"Temel yasa."}] },
-                { t: "Atışlar", tag: "AYT", c: [{h:"Serbest Düşme",t:"h=5t²"}] },
-                { t: "İtme ve Momentum", tag: "AYT", c: [{h:"İtme",t:"F.Δt = ΔP"}] },
-                { t: "Elektrik Alan", tag: "AYT", c: [{h:"Formül",t:"E=F/q"}] },
-                { t: "Çembersel Hareket", tag: "AYT", c: [{h:"Merkezcil",t:"F=m.v²/r"}] },
-                { t: "Basit Harmonik", tag: "AYT", c: [{h:"Sarkaç",t:"T=2π√(l/g)"}] }
-            ],
-            "Kimya": [
-                { t: "Kimya Bilimi", tag: "TYT", c: [{h:"Element",t:"Tek cins atom."}] },
-                { t: "Atom Modelleri", tag: "TYT", c: [{h:"Bohr",t:"Yörünge modeli."}] },
-                { t: "Periyodik Sistem", tag: "TYT", c: [{h:"Periyot",t:"Yatay sıra."}] },
-                { t: "Kimyasal Türler", tag: "TYT", c: [{h:"İyonik",t:"Metal+Ametal"}] },
-                { t: "Mol Kavramı", tag: "TYT", c: [{h:"Avogadro",t:"6,02x10^23"}] },
-                { t: "Asit-Baz", tag: "TYT", c: [{h:"Asit",t:"H+ verir."}] },
-                { t: "Modern Atom", tag: "AYT", c: [{h:"Orbital",t:"s,p,d,f"}] },
-                { t: "Gazlar", tag: "AYT", c: [{h:"İdeal",t:"PV=nRT"}] },
-                { t: "Sıvı Çözeltiler", tag: "AYT", c: [{h:"Molarite",t:"M=n/V"}] },
-                { t: "Enerji", tag: "AYT", c: [{h:"Entalpi",t:"ΔH"}] },
-                { t: "Hız", tag: "AYT", c: [{h:"Çarpışma",t:"Etkin çarpışma gerekir."}] },
-                { t: "Denge", tag: "AYT", c: [{h:"Kc",t:"Ürün/Giren"}] },
-                { t: "Elektrokimya", tag: "AYT", c: [{h:"Pil",t:"Anotta yükseltgenme."}] },
-                { t: "Organik", tag: "AYT", c: [{h:"Alkan",t:"CnH2n+2"}] }
-            ],
-            "Biyoloji": [
-                { t: "Canlıların Ortak Öz.", tag: "TYT", c: [{h:"ATP",t:"Enerji üretimi."}] },
-                { t: "Temel Bileşenler", tag: "TYT", c: [{h:"Enzim",t:"Biyolojik katalizör."}] },
-                { t: "Hücre", tag: "TYT", c: [{h:"Mitokondri",t:"Enerji santrali."}] },
-                { t: "Sınıflandırma", tag: "TYT", c: [{h:"Tür",t:"Verimli döl veren."}] },
-                { t: "Bölünmeler", tag: "TYT", c: [{h:"Mitoz",t:"Kalıtsal çeşitlilik yok."}] },
-                { t: "Kalıtım", tag: "TYT", c: [{h:"Mendel",t:"Genetik çaprazlama."}] },
-                { t: "Sistemler", tag: "AYT", c: [{h:"Sinir",t:"Nöron yapısı."},{h:"Dolaşım",t:"Kalp yapısı."}] },
-                { t: "Protein Sentezi", tag: "AYT", c: [{h:"DNA",t:"Yönetici molekül."}] },
-                { t: "Fotosentez", tag: "AYT", c: [{h:"Klorofil",t:"Işığı soğurur."}] },
-                { t: "Bitki Biyolojisi", tag: "AYT", c: [{h:"Ksilem",t:"Su boruları."}] }
-            ],
-            "Tarih": [
-                { t: "Tarih Bilimine Giriş", tag: "TYT", c: [{h:"Olay/Olgu",t:"Olay anlık, olgu süreçtir."}] },
-                { t: "İlk Çağ Uygarlıkları", tag: "TYT", c: [{h:"Sümerler",t:"Yazıyı buldular."}] },
-                { t: "İslamiyet Öncesi Türk", tag: "TYT", c: [{h:"Kurultay",t:"Devlet meclisi."},{h:"Kut",t:"Yönetme yetkisi."}] },
-                { t: "Türk İslam Tarihi", tag: "TYT", c: [{h:"Talas",t:"Türkler İslam'a girdi."},{h:"Gazneliler",t:"Sultan unvanı."}] },
-                { t: "Osmanlı Kuruluş", tag: "TYT", c: [{h:"İskan",t:"Yerleştirme politikası."}] },
-                { t: "Osmanlı Yükselme", tag: "TYT", c: [{h:"İstanbul",t:"1453 Fatih Sultan Mehmet."}] },
-                { t: "Osmanlı Duraklama", tag: "TYT", c: [{h:"Sebep",t:"Merkezi otorite bozuldu."}] },
-                { t: "1. Dünya Savaşı", tag: "TYT-AYT", c: [{h:"Cepheler",t:"Çanakkale (Zafer), Kafkas."}] },
-                { t: "Kurtuluş Savaşı", tag: "TYT-AYT", c: [{h:"Genelgeler",t:"Amasya, Erzurum, Sivas."}] },
-                { t: "İnkılaplar", tag: "TYT-AYT", c: [{h:"Laiklik",t:"Din ve devlet işlerinin ayrılması."}] }
-            ],
-            "Coğrafya": [
-                { t: "Doğa ve İnsan", tag: "TYT", c: [{h:"Muhteşem Dörtlü",t:"Atmosfer, Litosfer, Hidrosfer, Biyosfer."}] },
-                { t: "Dünya'nın Şekli", tag: "TYT", c: [{h:"Geoit",t:"Kutuplardan basık şekil."}] },
-                { t: "Harita Bilgisi", tag: "TYT", c: [{h:"Ölçek",t:"Küçültme oranı."},{h:"İzohips",t:"Eş yükselti eğrisi."}] },
-                { t: "İklim Bilgisi", tag: "TYT", c: [{h:"Atmosfer",t:"Katmanları vardır (Troposfer en alt)."}] },
-                { t: "Nüfus", tag: "TYT", c: [{h:"Piramitler",t:"Gelişmişlik düzeyini gösterir."}] },
-                { t: "İç Kuvvetler", tag: "TYT", c: [{h:"Orojenez",t:"Dağ oluşumu."}] },
-                { t: "Dış Kuvvetler", tag: "TYT", c: [{h:"Akarsular",t:"Aşındırma ve biriktirme yapar."}] },
-                { t: "Türkiye İklimi", tag: "AYT", c: [{h:"Akdeniz",t:"Yaz sıcak, kış ılık."}] },
-                { t: "Biyoçeşitlilik", tag: "AYT", c: [{h:"Ekosistem",t:"Canlı ve cansız çevre."}] },
-                { t: "Ekonomik Faaliyetler", tag: "AYT", c: [{h:"Tarım",t:"İklim ve yerşekilleri etkiler."}] }
-            ],
-            "Edebiyat": [
-                { t: "İslamiyet Öncesi", tag: "AYT", c: [{h:"Sav",t:"Atasözü."},{h:"Sagu",t:"Ağıt."}] },
-                { t: "Halk Edebiyatı", tag: "AYT", c: [{h:"Koşma",t:"11'li hece ölçüsü."}] },
-                { t: "Divan Edebiyatı", tag: "AYT", c: [{h:"Gazel",t:"5-15 beyit, aşk/şarap."},{h:"Kaside",t:"Övgü şiiri."}] },
-                { t: "Tanzimat", tag: "AYT", c: [{h:"Şinasi",t:"İlklerin adamı (Şair Evlenmesi)."}] },
-                { t: "Servet-i Fünun", tag: "AYT", c: [{h:"Halit Ziya",t:"Modern romanın babası (Aşk-ı Memnu)."}] },
-                { t: "Milli Edebiyat", tag: "AYT", c: [{h:"Ömer Seyfettin",t:"Olay hikayesi (Maupassant)."}] },
-                { t: "Cumhuriyet Şiiri", tag: "AYT", c: [{h:"Garip",t:"Orhan Veli. Kural tanımazlık."}] },
-                { t: "Cumhuriyet Roman", tag: "AYT", c: [{h:"Yaşar Kemal",t:"Çukurova, İnce Memed."}] },
-                { t: "Edebi Akımlar", tag: "AYT", c: [{h:"Romantizm",t:"Duygu hayal (Victor Hugo)."}] },
-                { t: "Şiir Bilgisi", tag: "AYT", c: [{h:"Redif",t:"Görevce aynı ekler."},{h:"Kafiye",t:"Ses benzerliği."}] }
-            ]
-        };
+        // --- CINEBOT VERİTABANI VE MANTIĞI ---
+        const movieDB = [
+            { t: "Interstellar", g: ["bilim kurgu", "uzay", "dram"], d: "İnsanlığın yok olma tehlikesiyle karşı karşıya olduğu bir gelecekte, bir grup astronotun yaşanabilir yeni bir gezegen bulmak için solucan deliğinden geçişini anlatır." },
+            { t: "Inception", g: ["bilim kurgu", "aksiyon", "gizem"], d: "Rüyaların içine girerek insanların sırlarını çalan bir hırsızın, bu sefer bir fikri birinin zihnine yerleştirmesi (inception) görevini konu alır." },
+            { t: "The Imitation Game", g: ["dram", "biyografi", "tarih", "matematik"], d: "Matematikçi Alan Turing'in, 2. Dünya Savaşı sırasında Almanların Enigma kodunu çözme çabasını anlatır." },
+            { t: "A Beautiful Mind", g: ["dram", "biyografi", "matematik"], d: "Nobel ödüllü matematikçi John Nash'in şizofreni ile mücadelesini ve oyun teorisi üzerindeki çalışmalarını konu alır." },
+            { t: "The Godfather", g: ["suç", "dram", "mafya"], d: "İtalyan-Amerikan bir suç ailesinin lideri Don Vito Corleone'nin, imparatorluğunu oğluna devretme sürecini anlatan bir başyapıt." },
+            { t: "Parasite", g: ["gerilim", "komedi", "dram"], d: "Fakir bir ailenin, zengin bir ailenin evine sızarak hayatlarını değiştirmeye çalışmasını konu alan ödüllü bir film." },
+            { t: "The Matrix", g: ["bilim kurgu", "aksiyon"], d: "Bir bilgisayar korsanının, yaşadığı dünyanın aslında makineler tarafından yaratılmış bir simülasyon olduğunu keşfetmesini anlatır." },
+            { t: "Forrest Gump", g: ["dram", "romantik", "komedi"], d: "Düşük IQ'ya sahip ama iyi kalpli Forrest Gump'ın, ABD tarihinin önemli olaylarına tanıklık ettiği hayat hikayesi." },
+            { t: "Moneyball", g: ["spor", "dram", "veri"], d: "Bir beyzbol takımı yöneticisinin, istatistiksel verileri kullanarak kısıtlı bütçeyle rekabetçi bir takım kurma hikayesi." },
+            { t: "The Hangover", g: ["komedi", "macera"], d: "Bekarlığa veda partisi için Las Vegas'a giden arkadaşların, sabah hiçbir şey hatırlamadan uyanıp damadı aramalarını anlatır." },
+            { t: "The Conjuring", g: ["korku", "gerilim"], d: "Paranormal araştırmacıların, perili bir çiftlik evinde yaşayan bir aileye yardım etmesini konu alan ürkütücü bir film." },
+            { t: "Avengers: Endgame", g: ["aksiyon", "macera", "süper kahraman"], d: "Yenilmezler'in, Thanos'un evrenin yarısını yok etmesinden sonra her şeyi düzeltmek için son bir savaşa girmesini anlatır." }
+        ];
 
-        // --- SAYFA YÖNETİMİ ---
-        function openNotes() { document.getElementById('notesModal').style.display = 'flex'; }
-        function openGameMenu() { document.getElementById('gamesMenuModal').style.display = 'flex'; }
-        function openMovies() { alert("Film listesi hazırlanıyor... (Yakında eklenecek)"); }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        let watchlist = JSON.parse(localStorage.getItem('aleWatchlist')) || [];
 
-        function loadSubject(subject) {
-            const container = document.getElementById('topicContainer');
-            document.getElementById('subjectTitle').innerText = subject;
-            
-            if(!curriculum[subject]) {
-                container.innerHTML = "<p>Bu dersin içerikleri hazırlanıyor.</p>";
+        function toggleChat(forceOpen = false) {
+            const chat = document.getElementById('cineBot');
+            if(forceOpen) { chat.style.display = 'flex'; }
+            else { chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex'; }
+            updateWatchlistUI();
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.chat-tab').forEach(t => t.classList.remove('active'));
+            if(tab === 'chat') {
+                document.querySelector('.chat-tab:nth-child(1)').classList.add('active');
+                document.getElementById('chatView').style.display = 'flex';
+                document.getElementById('chatInputArea').style.display = 'flex';
+                document.getElementById('listView').style.display = 'none';
+            } else {
+                document.querySelector('.chat-tab:nth-child(2)').classList.add('active');
+                document.getElementById('chatView').style.display = 'none';
+                document.getElementById('chatInputArea').style.display = 'none';
+                document.getElementById('listView').style.display = 'block';
+                updateWatchlistUI();
+            }
+        }
+
+        function handleEnter(e) { if(e.key === 'Enter') sendMessage(); }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const msg = input.value.trim().toLowerCase();
+            if(!msg) return;
+
+            addMsg(input.value, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                let response = "";
+                let suggestedMovie = null;
+
+                if(msg.includes('merhaba') || msg.includes('selam')) {
+                    response = "Merhaba! Hangi türde film önerisi istersin? (Bilim kurgu, Dram, Komedi, Korku vb.)";
+                } else if(msg.includes('listem') || msg.includes('izleme')) {
+                    response = "İzleme listene 'İzleme Listem' sekmesinden ulaşabilirsin.";
+                } else {
+                    // Basit kelime eşleştirme
+                    const matches = movieDB.filter(m => m.g.some(g => msg.includes(g)));
+                    if(matches.length > 0) {
+                        suggestedMovie = matches[Math.floor(Math.random() * matches.length)];
+                        response = `Sana <b>${suggestedMovie.t}</b> filmini öneririm.<br><br><b>Konusu:</b> ${suggestedMovie.d}`;
+                    } else {
+                        response = "Üzgünüm, bu türde bir film bulamadım. Başka bir tür dener misin? (Örn: Aksiyon, Veri, Matematik)";
+                    }
+                }
+
+                addMsg(response, 'bot', suggestedMovie);
+            }, 600);
+        }
+
+        function addMsg(text, sender, movie = null) {
+            const chatView = document.getElementById('chatView');
+            const div = document.createElement('div');
+            div.className = `message ${sender}-msg`;
+            div.innerHTML = text;
+            chatView.appendChild(div);
+
+            if(movie) {
+                const suggDiv = document.createElement('div');
+                suggDiv.className = 'movie-suggestion-card';
+                suggDiv.innerHTML = `<button class="add-btn" onclick="addToWatchlist('${movie.t}', '${movie.g[0]}')"><i class="fa-solid fa-plus"></i> Listeme Ekle</button>`;
+                chatView.appendChild(suggDiv);
+            }
+            chatView.scrollTop = chatView.scrollHeight;
+        }
+
+        function addToWatchlist(title, genre) {
+            if(!watchlist.some(m => m.title === title)) {
+                watchlist.push({ title, genre });
+                localStorage.setItem('aleWatchlist', JSON.stringify(watchlist));
+                alert(`${title} listene eklendi!`);
+                updateWatchlistUI();
+            } else {
+                alert("Bu film zaten listende var.");
+            }
+        }
+
+        function removeFromWatchlist(index) {
+            watchlist.splice(index, 1);
+            localStorage.setItem('aleWatchlist', JSON.stringify(watchlist));
+            updateWatchlistUI();
+        }
+
+        function updateWatchlistUI() {
+            const container = document.getElementById('listView');
+            if(watchlist.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#999; margin-top:20px;">Listen boş. CineBot\'tan öneri iste!</p>';
                 return;
             }
-
-            container.innerHTML = curriculum[subject].map(topic => `
-                <div class="topic-group">
-                    <div class="topic-head">
-                        ${topic.t}
-                        <span class="tag ${topic.tag.includes('TYT') ? 'tyt' : 'ayt'}">${topic.tag}</span>
+            container.innerHTML = watchlist.map((m, i) => `
+                <div class="watchlist-item">
+                    <div>
+                        <div class="w-title">${m.title}</div>
+                        <div class="w-genre">${m.genre}</div>
                     </div>
-                    <div class="flashcards">
-                        ${topic.c.map(card => `
-                            <div class="card">
-                                <h5>${card.h}</h5>
-                                <p>${card.t}</p>
-                            </div>
-                        `).join('')}
-                    </div>
+                    <div class="w-remove" onclick="removeFromWatchlist(${i})"><i class="fa-solid fa-trash"></i></div>
                 </div>
             `).join('');
         }
 
-        /* --- OYUN MOTORLARI --- */
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const nextCanvas = document.getElementById('nextCanvas');
-        const nextCtx = nextCanvas.getContext('2d');
-        const overlay = document.getElementById('gameOverOverlay');
-        
+        // --- MÜFREDAT VERİTABANI ---
+        const curriculum = {
+            "Matematik": [
+                { t: "Temel Kavramlar", tag: "TYT", c: [{h:"Rakam",t:"{0..9}"},{h:"Asal",t:"Sadece 1'e bölünür."}] },
+                { t: "Üslü Sayılar", tag: "TYT", c: [{h:"Çarpma",t:"Tabanlar aynıysa üsler toplanır."}] },
+                { t: "Fonksiyonlar", tag: "TYT-AYT", c: [{h:"Birebir",t:"Her eleman farklı yere gider."}] },
+                { t: "Türev", tag: "AYT", c: [{h:"Anlamı",t:"Teğetin eğimidir."}] },
+                { t: "İntegral", tag: "AYT", c: [{h:"Alan",t:"Eğri altındaki alan."}] }
+            ],
+            "Fizik": [
+                { t: "Kuvvet", tag: "TYT", c: [{h:"F=ma",t:"Newton 2. yasa."}] },
+                { t: "Optik", tag: "TYT", c: [{h:"Yansıma",t:"Gelme açısı yansımaya eşit."}] },
+                { t: "Atışlar", tag: "AYT", c: [{h:"Serbest Düşme",t:"h=5t²"}] }
+            ],
+            "Kimya": [
+                { t: "Atom", tag: "TYT", c: [{h:"Proton",t:"Çekirdekte, pozitif."}] },
+                { t: "Organik", tag: "AYT", c: [{h:"Alkan",t:"Doymuş hidrokarbon."}] }
+            ],
+            "Biyoloji": [
+                { t: "Hücre", tag: "TYT", c: [{h:"Mitokondri",t:"Enerji üretir."}] },
+                { t: "Sistemler", tag: "AYT", c: [{h:"Sinir",t:"Nöron yapısı."}] }
+            ],
+            "Tarih": [
+                { t: "İlk Türkler", tag: "TYT", c: [{h:"Kurultay",t:"Meclis."}] },
+                { t: "İnkılap", tag: "AYT", c: [{h:"Laiklik",t:"Din ve devlet ayrımı."}] }
+            ],
+            "Coğrafya": [
+                { t: "İklim", tag: "TYT", c: [{h:"Basınç",t:"Alçak basınç yağış getirir."}] },
+                { t: "Türkiye", tag: "AYT", c: [{h:"Platolar",t:"Yüksek düzlükler."}] }
+            ],
+            "Edebiyat": [
+                { t: "Şiir", tag: "AYT", c: [{h:"Redif",t:"Ek benzerliği."}] },
+                { t: "Dönemler", tag: "AYT", c: [{h:"Tanzimat",t:"Batılılaşma."}] }
+            ]
+        };
+
+        // --- SAYFA YÖNETİMİ ---
+        function openNotes(){ document.getElementById('notesModal').style.display='flex'; }
+        function openGameMenu(){ document.getElementById('gamesMenuModal').style.display='flex'; }
+        function openMovies(){ toggleChat(true); } 
+        function closeModal(id){ document.getElementById(id).style.display='none'; }
+
+        function loadSubject(subject){
+            const c=document.getElementById('topicContainer');
+            if(!curriculum[subject]){c.innerHTML="Hazırlanıyor...";return;}
+            c.innerHTML=curriculum[subject].map(t=>`<div class="topic-group"><div class="topic-head">${t.t}<span class="tag ${t.tag.includes('T')?'tyt':'ayt'}">${t.tag}</span></div><div class="flashcards">${t.c.map(x=>`<div class="card"><h5>${x.h}</h5><p>${x.t}</p></div>`).join('')}</div></div>`).join('');
+        }
+
+        // --- OYUN MOTORLARI ---
+        const canvas=document.getElementById('gameCanvas'); const ctx=canvas.getContext('2d');
+        const nextCanvas=document.getElementById('nextCanvas'); const nextCtx=nextCanvas.getContext('2d');
         let gameInterval, activeGame=null, score=0, level=1, lives=3;
-        let pacman, ghosts, map, totalDots, snake, food, snakeDir, tetrisBoard, tetrisPiece, nextTetrisPiece;
-        let animationFrame = 0;
+        let pacman, ghosts, map, totalDots, snake, food, snakeDir, tetrisBoard, tetrisPiece, nextTetrisPiece, animFrame=0;
 
-        function initGame(game) {
-            document.getElementById('gamesMenuModal').style.display = 'none';
-            document.getElementById('gameModal').style.display = 'flex';
-            activeGame = game;
-            restartActiveGame();
+        function initGame(g){ document.getElementById('gamesMenuModal').style.display='none'; document.getElementById('gameModal').style.display='flex'; activeGame=g; restart(); }
+        function stopGame(){ clearInterval(gameInterval); document.getElementById('gameModal').style.display='none'; }
+        function restart(){ document.getElementById('gameOverOverlay').style.display='none'; score=0; level=1; lives=3; updateUI(); clearInterval(gameInterval); document.getElementById('nextPieceContainer').style.display='none';
+            if(activeGame==='snake'){canvas.width=500;canvas.height=500;document.getElementById('livesContainer').style.display='none';startSnake();}
+            else if(activeGame==='tetris'){canvas.width=240;canvas.height=400;document.getElementById('livesContainer').style.display='none';document.getElementById('nextPieceContainer').style.display='block';startTetris();}
+            else if(activeGame==='pacman'){canvas.width=608;canvas.height=416;document.getElementById('livesContainer').style.display='block';startPacman();}
         }
+        function updateUI(){document.getElementById('scoreVal').innerText=score;document.getElementById('levelVal').innerText=level;document.getElementById('livesVal').innerText="❤️".repeat(lives);}
+        function gameOver(w){clearInterval(gameInterval);document.getElementById('finalScore').innerText=score;document.getElementById('gameOverOverlay').style.display='flex';}
 
-        function stopGame() {
-            clearInterval(gameInterval);
-            document.getElementById('gameModal').style.display = 'none';
-        }
-
-        function restartActiveGame() {
-            overlay.style.display = 'none';
-            score=0; level=1; lives=3; updateUI();
-            clearInterval(gameInterval);
-            document.getElementById('nextPieceContainer').style.display = 'none';
-
-            if(activeGame === 'snake') {
-                canvas.width = 500; canvas.height = 500;
-                document.getElementById('livesContainer').style.display = 'none';
-                startSnake();
-            } else if(activeGame === 'tetris') {
-                canvas.width = 240; canvas.height = 400;
-                document.getElementById('livesContainer').style.display = 'none';
-                document.getElementById('nextPieceContainer').style.display = 'block';
-                startTetris();
-            } else if(activeGame === 'pacman') {
-                canvas.width = 608; canvas.height = 416; 
-                document.getElementById('livesContainer').style.display = 'block';
-                startPacman();
-            }
-        }
-
-        function updateUI() {
-            document.getElementById('scoreVal').innerText = score;
-            document.getElementById('levelVal').innerText = level;
-            document.getElementById('livesVal').innerText = "❤️".repeat(lives);
-        }
-
-        function triggerGameOver(win) {
-            clearInterval(gameInterval);
-            document.getElementById('finalScore').innerText = score;
-            overlay.style.display = 'flex';
-        }
-
-        // --- YILAN (3D STYLE) ---
-        function startSnake() {
-            const box = 25; snake = [{x:10*box, y:10*box}]; food = {x:Math.floor(Math.random()*20)*box, y:Math.floor(Math.random()*20)*box};
-            snakeDir = "RIGHT"; let speed = 150;
-            function update() {
+        // 1. SNAKE
+        function startSnake(){
+            const box=25; snake=[{x:250,y:250}]; food={x:100,y:100}; snakeDir="R";
+            function update(){
                 ctx.fillStyle="#222"; ctx.fillRect(0,0,500,500);
-                ctx.strokeStyle="#333"; ctx.lineWidth=1;
-                for(let i=0;i<500;i+=box){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,500);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(500,i);ctx.stroke();}
-                for(let i=0; i<snake.length; i++){
-                    ctx.fillStyle = (i==0) ? "#2ecc71" : "#27ae60";
-                    ctx.beginPath(); ctx.roundRect(snake[i].x+1, snake[i].y+1, box-2, box-2, 8); ctx.fill();
-                    if(i==0){
-                        ctx.fillStyle="white"; let ex=snake[i].x, ey=snake[i].y;
-                        if(snakeDir=="RIGHT"){ctx.fillRect(ex+18,ey+5,4,4);ctx.fillRect(ex+18,ey+16,4,4);}
-                        else if(snakeDir=="LEFT"){ctx.fillRect(ex+3,ey+5,4,4);ctx.fillRect(ex+3,ey+16,4,4);}
-                        else if(snakeDir=="UP"){ctx.fillRect(ex+5,ey+3,4,4);ctx.fillRect(ex+16,ey+3,4,4);}
-                        else if(snakeDir=="DOWN"){ctx.fillRect(ex+5,ey+18,4,4);ctx.fillRect(ex+16,ey+18,4,4);}
-                    }
-                }
-                ctx.fillStyle="#e74c3c"; ctx.beginPath(); ctx.arc(food.x+box/2, food.y+box/2, box/2-2, 0, Math.PI*2); ctx.fill();
-                let sx=snake[0].x, sy=snake[0].y;
-                if(snakeDir=="LEFT")sx-=box; if(snakeDir=="UP")sy-=box; if(snakeDir=="RIGHT")sx+=box; if(snakeDir=="DOWN")sy+=box;
-                if(sx==food.x&&sy==food.y){score+=10; level++; speed=Math.max(50,speed-5); clearInterval(gameInterval); gameInterval=setInterval(update,speed); food={x:Math.floor(Math.random()*20)*box,y:Math.floor(Math.random()*20)*box}; updateUI();}
-                else snake.pop();
-                if(sx<0||sx>=500||sy<0||sy>=500||snake.some(s=>s.x===sx&&s.y===sy)) triggerGameOver(false);
-                snake.unshift({x:sx,y:sy});
+                for(let i=0;i<snake.length;i++){ctx.fillStyle=i==0?"#2ecc71":"#27ae60";ctx.fillRect(snake[i].x,snake[i].y,23,23);}
+                ctx.fillStyle="red"; ctx.fillRect(food.x,food.y,23,23);
+                let x=snake[0].x, y=snake[0].y;
+                if(snakeDir=="L")x-=box; if(snakeDir=="U")y-=box; if(snakeDir=="R")x+=box; if(snakeDir=="D")y+=box;
+                if(x==food.x&&y==food.y){score+=10;food={x:Math.floor(Math.random()*19)*box,y:Math.floor(Math.random()*19)*box};updateUI();}else snake.pop();
+                if(x<0||x>=500||y<0||y>=500||snake.some(s=>s.x===x&&s.y===y))gameOver(false);
+                snake.unshift({x,y});
             }
-            document.onkeydown=e=>{if(activeGame==='snake'){if(e.key==="ArrowLeft"&&snakeDir!="RIGHT")snakeDir="LEFT";else if(e.key==="ArrowUp"&&snakeDir!="DOWN")snakeDir="UP";else if(e.key==="ArrowRight"&&snakeDir!="LEFT")snakeDir="RIGHT";else if(e.key==="ArrowDown"&&snakeDir!="UP")snakeDir="DOWN";}};
-            gameInterval=setInterval(update, speed);
+            document.onkeydown=e=>{if(activeGame==='snake'){if(e.key=="ArrowLeft"&&snakeDir!="R")snakeDir="L";if(e.key=="ArrowUp"&&snakeDir!="D")snakeDir="U";if(e.key=="ArrowRight"&&snakeDir!="L")snakeDir="R";if(e.key=="ArrowDown"&&snakeDir!="U")snakeDir="D";}}
+            gameInterval=setInterval(update, 150);
         }
 
-        // --- TETRIS ---
-        function startTetris() {
-            const R=20, C=12, S=20; let board=Array(R).fill().map(()=>Array(C).fill("BLACK"));
-            const PIECES=[[ [1,1,1,1] ],[ [1,1],[1,1] ],[ [0,1,0],[1,1,1] ],[ [1,1,0],[0,1,1] ],[ [0,1,1],[1,1,0] ],[ [1,0,0],[1,1,1] ],[ [0,0,1],[1,1,1] ]];
-            const COLORS=["cyan","yellow","purple","green","red","blue","orange"];
-            function newP(){let r=Math.floor(Math.random()*PIECES.length); return {shape:PIECES[r], color:COLORS[r], x:4, y:0};}
-            tetrisPiece=newP(); nextTetrisPiece=newP(); drawNext();
-            function drawSquare(x,y,c,ctxT=ctx){ctxT.fillStyle=c;ctxT.fillRect(x*S,y*S,S,S);ctxT.strokeStyle="#333";ctxT.strokeRect(x*S,y*S,S,S);}
-            function draw(){ctx.fillStyle="black"; ctx.fillRect(0,0,240,400); board.forEach((r,y)=>r.forEach((c,x)=>drawSquare(x,y,c))); tetrisPiece.shape.forEach((r,y)=>r.forEach((v,x)=>{if(v)drawSquare(tetrisPiece.x+x, tetrisPiece.y+y, tetrisPiece.color)}));}
-            function drawNext(){nextCtx.fillStyle="#222"; nextCtx.fillRect(0,0,80,80); nextTetrisPiece.shape.forEach((r,y)=>r.forEach((v,x)=>{if(v){nextCtx.fillStyle=nextTetrisPiece.color; nextCtx.fillRect((x+1)*15, (y+1)*15, 15,15); nextCtx.strokeRect((x+1)*15, (y+1)*15, 15,15);}}));}
-            function coll(x,y,shp){return shp.some((r,dy)=>r.some((v,dx)=>v&&(tetrisPiece.y+dy+y>=R||tetrisPiece.x+dx+x<0||tetrisPiece.x+dx+x>=C||(tetrisPiece.y+dy+y>=0&&board[tetrisPiece.y+dy+y][tetrisPiece.x+dx+x]!="BLACK"))));}
-            function lock(){tetrisPiece.shape.forEach((r,y)=>r.forEach((v,x)=>{if(v){if(tetrisPiece.y+y<=0){triggerGameOver(false);return;}board[tetrisPiece.y+y][tetrisPiece.x+x]=tetrisPiece.color;}}));for(let r=0;r<R;r++)if(board[r].every(c=>c!="BLACK")){board.splice(r,1); board.unshift(Array(C).fill("BLACK")); score+=100; updateUI();}tetrisPiece=nextTetrisPiece; nextTetrisPiece=newP(); drawNext();}
-            function move(){if(!coll(0,1,tetrisPiece.shape))tetrisPiece.y++;else lock();draw();}
-            document.onkeydown=e=>{if(activeGame==='tetris'){if(e.key==="ArrowLeft"&&!coll(-1,0,tetrisPiece.shape))tetrisPiece.x--;if(e.key==="ArrowRight"&&!coll(1,0,tetrisPiece.shape))tetrisPiece.x++;if(e.key==="ArrowDown")move();if(e.key==="ArrowUp"){let rotated = tetrisPiece.shape[0].map((val, index) => tetrisPiece.shape.map(row => row[index]).reverse());if(!coll(0,0,rotated)) tetrisPiece.shape=rotated;}}};
+        // 2. TETRIS
+        function startTetris(){
+            const R=20,C=12,S=20; let board=Array(R).fill().map(()=>Array(C).fill("BLACK"));
+            const P=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]]]; let p=newP(),np=newP(); drawN();
+            function newP(){return{s:P[Math.floor(Math.random()*P.length)],x:4,y:0,c:"cyan"};}
+            function draw(){ctx.fillStyle="black";ctx.fillRect(0,0,240,400);board.forEach((r,y)=>r.forEach((c,x)=>{ctx.fillStyle=c;ctx.fillRect(x*S,y*S,S,S);ctx.strokeRect(x*S,y*S,S,S)}));p.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){ctx.fillStyle=p.c;ctx.fillRect((p.x+x)*S,(p.y+y)*S,S,S)}}));}
+            function drawN(){nextCtx.fillStyle="#222";nextCtx.fillRect(0,0,80,80);np.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){nextCtx.fillStyle=np.c;nextCtx.fillRect((x+1)*15,(y+1)*15,15,15)}}));}
+            function coll(x,y,s){return s.some((r,dy)=>r.some((v,dx)=>v&&(p.y+dy+y>=R||p.x+dx+x<0||p.x+dx+x>=C||(p.y+dy+y>=0&&board[p.y+dy+y][p.x+dx+x]!="BLACK"))));}
+            function move(){if(!coll(0,1,p.s))p.y++;else{p.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){if(p.y+y<0)gameOver(false);else board[p.y+y][p.x+x]=p.c}}));for(let r=0;r<R;r++)if(board[r].every(c=>c!="BLACK")){board.splice(r,1);board.unshift(Array(C).fill("BLACK"));score+=100;}p=np;np=newP();drawN();}draw();updateUI();}
+            document.onkeydown=e=>{if(activeGame==='tetris'){if(e.key=="ArrowLeft"&&!coll(-1,0,p.s))p.x--;if(e.key=="ArrowRight"&&!coll(1,0,p.s))p.x++;if(e.key=="ArrowDown")move();if(e.key=="ArrowUp"){let rot=p.s[0].map((_,i)=>p.s.map(row=>row[i]).reverse());if(!coll(0,0,rot))p.s=rot;}}}
             gameInterval=setInterval(move, 500);
         }
 
-        // --- PACMAN (NEON) ---
+        // 3. PACMAN
         function startPacman(){
-            const TILE=32;
-            const baseMap = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,3,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,3,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,0,1,1,2,1,1,0,1,0,1,1,0,1],[1,0,0,0,0,1,0,2,2,2,2,2,0,1,0,0,0,0,1],[1,1,1,1,0,1,1,1,2,2,2,1,1,1,0,1,1,1,1],[1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,3,0,1,0,0,0,0,0,9,0,0,0,0,0,1,0,3,1],[1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1],[1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
-            function loadLevel(){map=JSON.parse(JSON.stringify(baseMap));pacman={x:9,y:9,dX:0,dY:0,nX:0,nY:0,angle:0,mouth:0.2,mDir:1};ghosts=[{x:9,y:5,color:'#ff4757',sX:9,sY:5,state:'normal'},{x:8,y:5,color:'#ff6b81',sX:8,sY:5,state:'normal'},{x:10,y:5,color:'#70a1ff',sX:10,sY:5,state:'normal'},{x:9,y:6,color:'#ffa502',sX:9,sY:6,state:'normal'}];totalDots=0; for(let r=0;r<map.length;r++)for(let c=0;c<map[0].length;c++)if(map[r][c]===0||map[r][c]===3)totalDots++;}
-            loadLevel(); let powerTime=0;
-            function update(){animationFrame++;if(map[pacman.y+pacman.nY][pacman.x+pacman.nX]!==1){pacman.dX=pacman.nX;pacman.dY=pacman.nY;}if(map[pacman.y+pacman.dY][pacman.x+pacman.dX]!==1){pacman.x+=pacman.dX;pacman.y+=pacman.dY;pacman.mouth+=0.1*pacman.mDir; if(pacman.mouth>0.4||pacman.mouth<0.05)pacman.mDir*=-1;if(pacman.dX===1)pacman.angle=0;if(pacman.dX===-1)pacman.angle=Math.PI;if(pacman.dY===-1)pacman.angle=-Math.PI/2;if(pacman.dY===1)pacman.angle=Math.PI/2;}let t=map[pacman.y][pacman.x];if(t===0){map[pacman.y][pacman.x]=2;score+=10;totalDots--;}else if(t===3){map[pacman.y][pacman.x]=2;score+=50;totalDots--;powerTime=50;ghosts.forEach(g=>g.state='scared');}if(totalDots<=0){level++;loadLevel();return;}if(powerTime>0){powerTime--;if(powerTime===0)ghosts.forEach(g=>g.state='normal');}ghosts.forEach(g=>{let dirs=[{x:0,y:-1},{x:0,y:1},{x:-1,y:0},{x:1,y:0}].filter(d=>map[g.y+d.y][g.x+d.x]!==1);if(dirs.length>0){let m=dirs[Math.floor(Math.random()*dirs.length)];g.x+=m.x;g.y+=m.y;}if(g.x===pacman.x&&g.y===pacman.y){if(g.state==='scared'){score+=200;g.x=g.sX;g.y=g.sY;g.state='normal';}else{lives--;updateUI();if(lives<=0)triggerGameOver(false);else{pacman.x=9;pacman.y=9;pacman.dX=0;pacman.dY=0;}}}});updateUI();draw();}
-            function draw(){ctx.fillStyle="black"; ctx.fillRect(0,0,608,416);for(let r=0;r<map.length;r++)for(let c=0;c<map[0].length;c++){if(map[r][c]===1){ctx.strokeStyle="#00a8ff";ctx.lineWidth=2;ctx.strokeRect(c*TILE+4,r*TILE+4,TILE-8,TILE-8);ctx.shadowBlur=10; ctx.shadowColor="#00a8ff"; ctx.strokeRect(c*TILE+8,r*TILE+8,TILE-16,TILE-16); ctx.shadowBlur=0;}else if(map[r][c]===0){ctx.fillStyle="#fab1a0";ctx.beginPath();ctx.arc(c*TILE+16,r*TILE+16,4,0,Math.PI*2);ctx.fill();}else if(map[r][c]===3){ctx.fillStyle="white";ctx.beginPath();ctx.arc(c*TILE+16,r*TILE+16,(animationFrame%4==0?9:6),0,Math.PI*2);ctx.fill();}}let px=pacman.x*TILE+16,py=pacman.y*TILE+16;ctx.save();ctx.translate(px,py);ctx.rotate(pacman.angle);ctx.beginPath();ctx.arc(0,0,13,pacman.mouth*Math.PI,(2-pacman.mouth)*Math.PI);ctx.lineTo(0,0);ctx.fillStyle="#f1c40f";ctx.fill();ctx.restore();ghosts.forEach(g=>{let gx=g.x*TILE+16,gy=g.y*TILE+16; ctx.fillStyle=g.state==='scared'?'#74b9ff':g.color;ctx.beginPath();ctx.arc(gx,gy-4,13,Math.PI,0);ctx.lineTo(gx+13,gy+13);ctx.lineTo(gx-13,gy+13);ctx.fill();});}
-            document.onkeydown=e=>{if(activeGame==='pacman'){if(e.key==="ArrowUp"){pacman.nX=0;pacman.nY=-1}if(e.key==="ArrowDown"){pacman.nX=0;pacman.nY=1}if(e.key==="ArrowLeft"){pacman.nX=-1;pacman.nY=0}if(e.key==="ArrowRight"){pacman.nX=1;pacman.nY=0}}};
-            gameInterval=setInterval(update, Math.max(120, 200-(level*10)));
+            const TILE=32; const baseMap=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,3,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,3,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,0,1,1,2,1,1,0,1,0,1,1,0,1],[1,0,0,0,0,1,0,2,2,2,2,2,0,1,0,0,0,0,1],[1,1,1,1,0,1,1,1,2,2,2,1,1,1,0,1,1,1,1],[1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,3,0,1,0,0,0,0,0,9,0,0,0,0,0,1,0,3,1],[1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1],[1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
+            function load(){map=JSON.parse(JSON.stringify(baseMap));pacman={x:9,y:9,dX:0,dY:0,nX:0,nY:0,angle:0,mouth:0.2,mDir:1};ghosts=[{x:9,y:5,c:'red',s:'n'},{x:8,y:5,c:'pink',s:'n'}];totalDots=0;for(let r=0;r<map.length;r++)for(let c=0;c<map[0].length;c++)if(map[r][c]==0||map[r][c]==3)totalDots++;}
+            load();
+            function update(){
+                animFrame++; if(map[pacman.y+pacman.nY][pacman.x+pacman.nX]!=1){pacman.dX=pacman.nX;pacman.dY=pacman.nY;}
+                if(map[pacman.y+pacman.dY][pacman.x+pacman.dX]!=1){pacman.x+=pacman.dX;pacman.y+=pacman.dY;pacman.mouth+=0.1*pacman.mDir;if(pacman.mouth>0.4||pacman.mouth<0.05)pacman.mDir*=-1;}
+                let t=map[pacman.y][pacman.x]; if(t==0){map[pacman.y][pacman.x]=2;score+=10;totalDots--;}else if(t==3){map[pacman.y][pacman.x]=2;score+=50;totalDots--;ghosts.forEach(g=>g.s='s');setTimeout(()=>ghosts.forEach(g=>g.s='n'),5000);}
+                if(totalDots<=0){level++;load();}
+                ghosts.forEach(g=>{
+                    if(Math.random()<0.5){let dirs=[{x:0,y:-1},{x:0,y:1},{x:-1,y:0},{x:1,y:0}].filter(d=>map[g.y+d.y][g.x+d.x]!=1);if(dirs.length){let m=dirs[Math.floor(Math.random()*dirs.length)];g.x+=m.x;g.y+=m.y;}}
+                    if(g.x==pacman.x&&g.y==pacman.y){if(g.s=='s'){score+=200;g.x=9;g.y=5;g.s='n';}else{lives--;if(lives<=0)gameOver(false);else{pacman.x=9;pacman.y=9;pacman.dX=0;}}}
+                });
+                updateUI(); draw();
+            }
+            function draw(){
+                ctx.fillStyle="black";ctx.fillRect(0,0,608,416);
+                for(let r=0;r<map.length;r++)for(let c=0;c<map[0].length;c++){if(map[r][c]==1){ctx.strokeStyle="#00a8ff";ctx.strokeRect(c*TILE+4,r*TILE+4,TILE-8,TILE-8);}else if(map[r][c]==0){ctx.fillStyle="#fab1a0";ctx.beginPath();ctx.arc(c*TILE+16,r*TILE+16,4,0,Math.PI*2);ctx.fill();}else if(map[r][c]==3){ctx.fillStyle="white";ctx.beginPath();ctx.arc(c*TILE+16,r*TILE+16,8,0,Math.PI*2);ctx.fill();}}
+                let px=pacman.x*TILE+16,py=pacman.y*TILE+16; ctx.save();ctx.translate(px,py);ctx.beginPath();ctx.arc(0,0,13,pacman.mouth*Math.PI,(2-pacman.mouth)*Math.PI);ctx.lineTo(0,0);ctx.fillStyle="yellow";ctx.fill();ctx.restore();
+                ghosts.forEach(g=>{let gx=g.x*TILE+16,gy=g.y*TILE+16;ctx.fillStyle=g.s=='s'?'blue':g.c;ctx.beginPath();ctx.arc(gx,gy-4,13,Math.PI,0);ctx.lineTo(gx+13,gy+13);ctx.lineTo(gx-13,gy+13);ctx.fill();});
+            }
+            document.onkeydown=e=>{if(activeGame==='pacman'){if(e.key=="ArrowUp")pacman.nY=-1;if(e.key=="ArrowDown")pacman.nY=1;if(e.key=="ArrowLeft")pacman.nX=-1;if(e.key=="ArrowRight")pacman.nX=1;if(e.key=="ArrowUp"||e.key=="ArrowDown")pacman.nX=0;else pacman.nY=0;}}
+            gameInterval=setInterval(update, 150);
         }
     </script>
 </body>
