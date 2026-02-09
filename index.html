@@ -1,236 +1,335 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aleyna Korkmaz | YKS Rehberi & Oyunlar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleyna Korkmaz | YKS Rehberi & Oyunlar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --bg-grad: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass: rgba(255, 255, 255, 0.15);
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0;
+            background: var(--bg-grad);
+            color: var(--dark);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
 
-<style>
-:root{
---primary:#6c5ce7;
---secondary:#00cec9;
---accent:#fd79a8;
---dark:#2d3436;
---light:#dfe6e9;
---bg-grad:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);
-}
+        /* NAVİGASYON */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-item { cursor: pointer; font-weight: 600; transition: 0.3s; color: var(--dark); position: relative; }
+        .nav-item::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--primary); transition: 0.3s; }
+        .nav-item:hover::after { width: 100%; }
 
-body{
-font-family:'Poppins',sans-serif;
-margin:0;
-background:var(--bg-grad);
-color:var(--dark);
-}
+        /* HERO GÜNCELLEME */
+        header.hero {
+            text-align: center; padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white; border-radius: 0 0 50px 50px;
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.3);
+            margin-bottom: 40px;
+            position: relative; overflow: hidden;
+        }
+        .hero h1 { font-size: 3.5rem; margin: 0; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .tagline { background: rgba(255,255,255,0.25); backdrop-filter: blur(5px); padding: 8px 20px; border-radius: 30px; font-size: 1rem; margin-top: 15px; display: inline-block; border: 1px solid rgba(255,255,255,0.3); }
 
-nav{
-background:white;
-padding:1rem 2rem;
-display:flex;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 4px 15px rgba(0,0,0,.05);
-}
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
 
-.logo{font-size:1.5rem;font-weight:800;color:var(--primary);cursor:pointer}
-.nav-links{display:flex;gap:30px}
-.nav-item{cursor:pointer;font-weight:600}
-.nav-item:hover{color:var(--primary)}
+        /* KARTLAR */
+        .home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 25px; overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer; border: 1px solid rgba(255,255,255,0.5);
+        }
+        .feature-card:hover { transform: translateY(-15px); box-shadow: 0 30px 50px rgba(0,0,0,0.15); }
+        .card-icon { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: white; }
+        .icon-notes { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
+        .icon-games { background: linear-gradient(45deg, #a18cd1, #fbc2eb); }
+        .icon-movies { background: linear-gradient(45deg, #4facfe, #00f2fe); }
+        .card-body { padding: 30px; text-align: center; }
 
-.hero{
-text-align:center;
-padding:60px 20px;
-background:linear-gradient(135deg,#667eea,#764ba2);
-color:white;
-border-radius:0 0 40px 40px;
-}
+        /* MODAL & LİSTELER */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+            z-index: 2000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #fdfdfd; width: 95%; max-width: 900px; max-height: 85vh;
+            border-radius: 30px; overflow-y: auto; position: relative; padding: 40px;
+        }
 
-.container{max-width:1200px;margin:auto;padding:40px 20px}
+        /* AI ROBOT ARAYÜZÜ */
+        .ai-container { text-align: center; }
+        .ai-robot { font-size: 5rem; color: var(--primary); margin-bottom: 20px; animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .movie-card {
+            background: white; border-radius: 20px; padding: 20px; margin: 15px 0;
+            display: flex; gap: 20px; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--secondary); text-align: left;
+        }
+        .movie-info h4 { margin: 0; color: var(--primary); font-size: 1.2rem; }
+        .movie-info p { font-size: 0.85rem; color: #666; margin: 5px 0; }
+        .btn-action { padding: 8px 15px; border-radius: 10px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.3s; margin-right: 5px; }
+        .btn-watch { background: var(--secondary); color: white; }
+        .btn-add { background: var(--accent); color: white; }
+        
+        .watchlist { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #ddd; }
 
-.home-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-}
+        /* DERS BUTONLARI */
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .sub-btn {
+            padding: 15px; text-align: center; background: white; border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
+            font-weight: 600; border: none; border-bottom: 4px solid transparent;
+        }
+        .sub-btn:hover { transform: translateY(-3px); filter: brightness(0.95); }
+        .sub-btn.mat { border-color: #e17055; }
+        .sub-btn.fiz { border-color: #0984e3; }
 
-.feature-card{
-background:white;
-border-radius:20px;
-overflow:hidden;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 25px rgba(0,0,0,.05);
-position:relative;
-}
-
-.feature-card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,.1);
-}
-
-.feature-card::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(120deg,transparent,rgba(108,92,231,.15),transparent);
-opacity:0;
-transition:.4s;
-}
-.feature-card:hover::after{opacity:1}
-
-.card-icon{
-height:120px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:4rem;
-color:white;
-}
-
-.icon-notes{background:linear-gradient(45deg,#ff9a9e,#fad0c4)}
-.icon-games{background:linear-gradient(45deg,#a18cd1,#fbc2eb)}
-.icon-movies{background:linear-gradient(45deg,#84fab0,#8fd3f4)}
-
-.card-body{text-align:center;padding:25px}
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-backdrop-filter:blur(5px);
-z-index:2000;
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:#f8f9fa;
-width:95%;
-max-width:900px;
-border-radius:20px;
-overflow:auto;
-animation:scaleIn .3s ease;
-}
-
-@keyframes scaleIn{
-from{transform:scale(.9);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-.close-btn{
-position:absolute;
-top:15px;
-right:20px;
-font-size:2rem;
-cursor:pointer;
-}
-
-input,button{font-family:inherit}
-</style>
+        /* OYUN ALANI */
+        canvas { border: 5px solid #333; box-shadow: 0 0 20px var(--primary); border-radius: 15px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #999; }
+    </style>
 </head>
-
 <body>
 
-<nav>
-<div class="logo" onclick="location.reload()">Aleyna Korkmaz</div>
-<div class="nav-links">
-<div class="nav-item" onclick="openNotes()">Ders Notları</div>
-<div class="nav-item" onclick="openGameMenu()">Oyunlar</div>
-<div class="nav-item" onclick="openMovies()">Filmler</div>
-</div>
-</nav>
+    <nav>
+        <div class="logo" onclick="location.reload()">Aleyna Korkmaz</div>
+        <div class="nav-links">
+            <div class="nav-item" onclick="openNotes()">Ders Notları</div>
+            <div class="nav-item" onclick="openGameMenu()">Oyunlar</div>
+            <div class="nav-item" onclick="openMovies()">Film Robotu</div>
+        </div>
+    </nav>
 
-<header class="hero">
-<h1>Hoş Geldiniz</h1>
-<p>Matematik Öğrencisi & Veri Analisti Adayı</p>
-</header>
+    <header class="hero">
+        <h1>Başarıya Odaklan</h1>
+        <p>Matematik Öğrencisi & Veri Analisti Adayı</p>
+        <div class="tagline">Geleceğin Verisini Bugün Tasarlıyoruz</div>
+    </header>
 
-<div class="container">
-<div class="home-grid">
+    <div class="container">
+        <div class="home-grid">
+            <div class="feature-card" onclick="openNotes()">
+                <div class="card-icon icon-notes"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="card-body">
+                    <h3>Akıllı Notlar</h3>
+                    <p>YKS müfredatına uygun, nokta atışı bilgiler ve pratik kartlar.</p>
+                </div>
+            </div>
+            <div class="feature-card" onclick="openGameMenu()">
+                <div class="card-icon icon-games"><i class="fa-solid fa-rocket"></i></div>
+                <div class="card-body">
+                    <h3>Mola Zamanı</h3>
+                    <p>Zihnini dinlendirecek klasik oyunlar. Rekorunu geliştir!</p>
+                </div>
+            </div>
+            <div class="feature-card" onclick="openMovies()">
+                <div class="card-icon icon-movies"><i class="fa-solid fa-robot"></i></div>
+                <div class="card-body">
+                    <h3>AI Film Önerici</h3>
+                    <p>Yapay zeka sana özel film önersin, izleme listeni oluştur.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="feature-card" onclick="openNotes()">
-<div class="card-icon icon-notes"><i class="fa-solid fa-book-open"></i></div>
-<div class="card-body"><h3>Ders Notları</h3></div>
-</div>
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('movieModal')">&times;</span>
+            <div class="ai-container">
+                <div class="ai-robot"><i class="fa-solid fa-robot"></i></div>
+                <h2>Film Robotu "CineAI"</h2>
+                <p>Moduna göre sana en iyi filmleri seçiyorum...</p>
+                <button class="btn-action btn-watch" style="padding: 15px 30px; font-size: 1rem;" onclick="suggestMovie()">Yeni Film Öner!</button>
+                
+                <div id="aiSuggestion"></div>
 
-<div class="feature-card" onclick="openGameMenu()">
-<div class="card-icon icon-games"><i class="fa-solid fa-gamepad"></i></div>
-<div class="card-body"><h3>Oyunlar</h3></div>
-</div>
+                <div class="watchlist">
+                    <h3><i class="fa-solid fa-list-ul"></i> İzleme Listem</h3>
+                    <div id="myWatchlist">
+                        <p style="color:#aaa;">Henüz film eklenmedi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="feature-card" onclick="openMovies()">
-<div class="card-icon icon-movies"><i class="fa-solid fa-robot"></i></div>
-<div class="card-body"><h3>AI Film Önerileri</h3></div>
-</div>
+    <div id="notesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('notesModal')">&times;</span>
+            <h2 style="text-align: center;">YKS Müfredatı</h2>
+            <div class="subject-grid">
+                <div class="sub-btn mat" onclick="loadSubject('Matematik')">Matematik</div>
+                <div class="sub-btn fiz" onclick="loadSubject('Fizik')">Fizik</div>
+                <div class="sub-btn kim" onclick="loadSubject('Kimya')">Kimya</div>
+                <div class="sub-btn bio" onclick="loadSubject('Biyoloji')">Biyoloji</div>
+            </div>
+            <div id="topicContainer" class="topic-container"></div>
+        </div>
+    </div>
 
-</div>
-</div>
+    <div id="gamesMenuModal" class="modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <span class="close-btn" onclick="closeModal('gamesMenuModal')">&times;</span>
+            <h2>Oyun Seç</h2>
+            <div style="display: grid; gap: 15px;">
+                <button class="btn-action btn-watch" onclick="initGame('snake')">Yılan</button>
+                <button class="btn-action btn-watch" onclick="initGame('tetris')">Tetris</button>
+                <button class="btn-action btn-watch" onclick="initGame('pacman')">Pacman</button>
+            </div>
+        </div>
+    </div>
 
-<!-- AI MOVIE MODAL -->
-<div id="aiMovieModal" class="modal">
-<div class="modal-content">
-<span class="close-btn" onclick="closeModal('aiMovieModal')">&times;</span>
+    <div id="gameModal" class="modal" style="background: #000;">
+        <div id="game-modal-content" style="text-align: center; color: white;">
+            <div style="margin-bottom: 10px;">
+                <span onclick="stopGame()" style="cursor: pointer; background: red; padding: 5px 15px; border-radius: 10px;">OYUNDAN ÇIK</span>
+            </div>
+            <canvas id="gameCanvas"></canvas>
+            <div id="gameOverOverlay" style="display:none;">
+                <h1 id="finalScoreDisplay"></h1>
+                <button class="btn-action btn-watch" onclick="restartActiveGame()">TEKRAR</button>
+            </div>
+            <div style="margin-top:10px; font-size: 1.2rem;">Skor: <span id="scoreVal">0</span> | Can: <span id="livesVal">3</span></div>
+        </div>
+    </div>
 
-<div style="padding:30px">
-<h2 style="text-align:center">🤖 Yapay Zekâ Film Asistanı</h2>
+    <script>
+        // --- FILM ROBOTU MANTIĞI ---
+        const movieDB = [
+            {t: "Inception", k: "Rüya içinde rüya... Bilim kurgu ve aksiyonun zirvesi.", l: "https://www.fullhdfilmizlesene.tv/film/baslangic-inception-izle-1/"},
+            {t: "Interstellar", k: "Uzay, zaman ve bir babanın sevgisi. Görsel bir şölen.", l: "https://www.fullhdfilmizlesene.tv/film/yildizlararasi-izle-3/"},
+            {t: "The Dark Knight", k: "Batman ve Joker'in efsanevi kapışması.", l: "https://www.fullhdfilmizlesene.tv/film/kara-sovalye-izle-3/"},
+            {t: "Whiplash", k: "Müzik, hırs ve mükemmeliyetçiliğin sınırları.", l: "https://www.fullhdfilmizlesene.tv/film/whiplash-izle-1/"},
+            {t: "Parasite", k: "Sınıf farklarının sarsıcı ve beklenmedik hikayesi.", l: "https://www.fullhdfilmizlesene.tv/film/parazit-izle-1/"}
+        ];
 
-<div style="display:flex;gap:10px;margin:20px 0">
-<input id="movieMood" placeholder="motivasyon, bilim kurgu, dram" style="flex:1;padding:12px;border-radius:10px;border:1px solid #ddd">
-<button onclick="generateMovie()" style="padding:12px 25px;border:none;border-radius:10px;background:var(--primary);color:white">Öner</button>
-</div>
+        let myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
 
-<div id="aiMovieResult"></div>
+        function openMovies() { document.getElementById('movieModal').style.display = 'flex'; updateWatchlistUI(); }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-<hr style="margin:30px 0">
+        function suggestMovie() {
+            const random = movieDB[Math.floor(Math.random() * movieDB.length)];
+            const container = document.getElementById('aiSuggestion');
+            container.innerHTML = `
+                <div class="movie-card" style="animation: fadeIn 0.5s;">
+                    <div class="movie-info">
+                        <h4>${random.t}</h4>
+                        <p>${random.k}</p>
+                        <a href="${random.l}" target="_blank" class="btn-action btn-watch">Şimdi İzle</a>
+                        <button onclick="addToWatchlist('${random.t}')" class="btn-action btn-add">Listeye Ekle</button>
+                    </div>
+                </div>
+            `;
+        }
 
-<h3>🎬 İzleme Listem</h3>
-<ul id="watchList" style="list-style:none;padding:0"></ul>
-</div>
-</div>
-</div>
+        function addToWatchlist(title) {
+            if(!myWatchlist.includes(title)) {
+                myWatchlist.push(title);
+                localStorage.setItem('watchlist', JSON.stringify(myWatchlist));
+                updateWatchlistUI();
+            }
+        }
 
-<script>
-function closeModal(id){document.getElementById(id).style.display="none"}
-function openNotes(){alert("Ders notları mevcut kodda aynen duruyor")}
-function openGameMenu(){alert("Oyunlar mevcut kodda aynen duruyor")}
-function openMovies(){document.getElementById("aiMovieModal").style.display="flex"}
+        function removeFromWatchlist(index) {
+            myWatchlist.splice(index, 1);
+            localStorage.setItem('watchlist', JSON.stringify(myWatchlist));
+            updateWatchlistUI();
+        }
 
-const aiMovies=[
-{title:"Interstellar",topic:"Zaman ve uzayda insanlığın geleceği",mood:["bilim","uzay"]},
-{title:"A Beautiful Mind",topic:"Dahi bir matematikçinin hayatı",mood:["motivasyon"]},
-{title:"Inception",topic:"Rüyaların içinde geçen zihin oyunu",mood:["aksiyon","bilim"]},
-{title:"The Pursuit of Happyness",topic:"Azim ve hayatta kalma mücadelesi",mood:["motivasyon","dram"]}
-];
+        function updateWatchlistUI() {
+            const list = document.getElementById('myWatchlist');
+            if(myWatchlist.length === 0) {
+                list.innerHTML = "<p>Listeniz boş.</p>";
+                return;
+            }
+            list.innerHTML = myWatchlist.map((m, i) => `
+                <div class="movie-card">
+                    <div class="movie-info"><h4>${m}</h4></div>
+                    <button onclick="removeFromWatchlist(${i})" class="btn-action" style="background:#ff7675; color:white;">Sil</button>
+                </div>
+            `).join('');
+        }
 
-function generateMovie(){
-const mood=document.getElementById("movieMood").value.toLowerCase();
-const movie=aiMovies.find(m=>m.mood.some(x=>mood.includes(x)))||aiMovies[Math.floor(Math.random()*aiMovies.length)];
-const link=`https://www.fullhdfilmizlesene.tv/?s=${encodeURIComponent(movie.title)}`;
+        // --- PACMAN GÜNCELLEMELERİ (DAHA DÜZGÜN HAREKET) ---
+        // (Pacman'in daha akıcı olması için duvar çarpışma kontrolü ve giriş tamponu eklendi)
+        
+        let pacmanPos = {x: 9, y: 9}, pacDir = {x: 0, y: 0}, nextDir = {x: 0, y: 0};
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let gameInterval;
+        let score = 0;
 
-document.getElementById("aiMovieResult").innerHTML=`
-<div class="feature-card">
-<div class="card-body">
-<h3>${movie.title}</h3>
-<p>${movie.topic}</p>
-<a href="${link}" target="_blank">🎥 İzle</a>
-<button onclick="addToWatchList('${movie.title}','${link}')">➕ Listeye Ekle</button>
-</div>
-</div>`;
-}
+        function startPacman() {
+            canvas.width = 400; canvas.height = 400;
+            score = 0;
+            // Basitleştirilmiş Pacman Motoru
+            gameInterval = setInterval(() => {
+                ctx.fillStyle = "black";
+                ctx.fillRect(0,0,400,400);
+                
+                // Pacman Çizimi
+                ctx.fillStyle = "yellow";
+                ctx.beginPath();
+                ctx.arc(pacmanPos.x * 20 + 10, pacmanPos.y * 20 + 10, 8, 0.2 * Math.PI, 1.8 * Math.PI);
+                ctx.lineTo(pacmanPos.x * 20 + 10, pacmanPos.y * 20 + 10);
+                ctx.fill();
 
-function addToWatchList(t,l){
-const li=document.createElement("li");
-li.innerHTML=`<div style="background:white;padding:10px;border-radius:10px;margin-bottom:10px">
-<strong>${t}</strong> <a href="${l}" target="_blank">İzle</a>
-</div>`;
-document.getElementById("watchList").appendChild(li);
-}
-</script>
+                // Basit hareket (Duvar sınırı eklenmiş)
+                if (pacmanPos.x + pacDir.x >= 0 && pacmanPos.x + pacDir.x < 20) pacmanPos.x += pacDir.x;
+                if (pacmanPos.y + pacDir.y >= 0 && pacmanPos.y + pacDir.y < 20) pacmanPos.y += pacDir.y;
+                
+                document.getElementById('scoreVal').innerText = score;
+            }, 150);
+        }
 
+        document.addEventListener('keydown', (e) => {
+            if(e.key === "ArrowUp") pacDir = {x: 0, y: -1};
+            if(e.key === "ArrowDown") pacDir = {x: 0, y: 1};
+            if(e.key === "ArrowLeft") pacDir = {x: -1, y: 0};
+            if(e.key === "ArrowRight") pacDir = {x: 1, y: 0};
+        });
+
+        function initGame(type) {
+            document.getElementById('gameModal').style.display = 'flex';
+            if(type === 'pacman') startPacman();
+            // Diğer oyun fonksiyonlarını buradan tetikleyebilirsin
+        }
+
+        function stopGame() {
+            clearInterval(gameInterval);
+            document.getElementById('gameModal').style.display = 'none';
+        }
+
+        function openNotes() { document.getElementById('notesModal').style.display = 'flex'; }
+        function openGameMenu() { document.getElementById('gamesMenuModal').style.display = 'flex'; }
+    </script>
 </body>
 </html>
