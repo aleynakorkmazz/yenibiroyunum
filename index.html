@@ -494,8 +494,29 @@ transition:opacity 0.6s ease;
             document.onkeydown=e=>{if(activeG==='pacman'){if(e.key=="ArrowUp")pacman.nY=-1;if(e.key=="ArrowDown")pacman.nY=1;if(e.key=="ArrowLeft")pacman.nX=-1;if(e.key=="ArrowRight")pacman.nX=1;if(e.key=="ArrowUp"||e.key=="ArrowDown")pacman.nX=0;else pacman.nY=0;}}
          gameInt=setInterval(upd,150);
 }
+/* ============================= */
+/*        YKS GERİ SAYIM        */
+/* ============================= */
 
-/* --- MOTİVASYON SÖZLERİ --- */
+const yksDate = new Date("June 14, 2026 10:15:00").getTime();
+
+function updateCountdown(){
+    const now = new Date().getTime();
+    const distance = yksDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+    document.getElementById("yksCountdown").innerText =
+        "🎯 YKS 2026'ya " + days + " gün kaldı!";
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+
+/* ============================= */
+/*      MOTİVASYON (FADE)       */
+/* ============================= */
+
 const motivationQuotes = [
 "Bugün zorlanıyorsan yarın güçleneceksin.",
 "Disiplin, motivasyondan daha güçlüdür.",
@@ -511,13 +532,84 @@ const motivationQuotes = [
 
 function showMotivation(){
     const el = document.getElementById("motivationText");
-    if(!el) return;
-    const random = motivationQuotes[Math.floor(Math.random()*motivationQuotes.length)];
-    el.innerText = "✨ " + random;
+    el.style.opacity = 0;
+
+    setTimeout(()=>{
+        const random = motivationQuotes[Math.floor(Math.random()*motivationQuotes.length)];
+        el.innerText = "✨ " + random;
+        el.style.opacity = 1;
+    },600);
 }
 
 showMotivation();
 setInterval(showMotivation, 8000);
+
+
+/* ============================= */
+/*        GÜNÜN SORUSU          */
+/* ============================= */
+
+const dailyQuestions = [
+{
+q:"f(x)=2x+3 ise f(5) kaçtır?",
+a:"f(5)=2.5+3=13"
+},
+{
+q:"log(100) kaçtır? (10 tabanında)",
+a:"2"
+},
+{
+q:"Bir üçgende iç açıların toplamı kaçtır?",
+a:"180°"
+}
+];
+
+const todayIndex = new Date().getDate() % dailyQuestions.length;
+document.getElementById("dailyQuestion").innerText =
+"🧠 Günün Sorusu: " + dailyQuestions[todayIndex].q;
+
+document.getElementById("dailyAnswer").innerText =
+"✅ Cevap: " + dailyQuestions[todayIndex].a;
+
+function toggleAnswer(){
+    const ans = document.getElementById("dailyAnswer");
+    ans.style.display = ans.style.display === "none" ? "block" : "none";
+}
+
+
+/* ============================= */
+/*         STREAK SİSTEMİ       */
+/* ============================= */
+
+function loadStreak(){
+    const lastDate = localStorage.getItem("lastStudyDate");
+    const streak = localStorage.getItem("studyStreak") || 0;
+    document.getElementById("streakCount").innerText = streak;
+
+    if(lastDate){
+        const diff = (new Date() - new Date(lastDate)) / (1000*60*60*24);
+        if(diff > 1){
+            localStorage.setItem("studyStreak",0);
+            document.getElementById("streakCount").innerText = 0;
+        }
+    }
+}
+
+function markStudyDay(){
+    const today = new Date().toDateString();
+    const lastDate = localStorage.getItem("lastStudyDate");
+    let streak = parseInt(localStorage.getItem("studyStreak")) || 0;
+
+    if(lastDate !== today){
+        streak++;
+        localStorage.setItem("studyStreak", streak);
+        localStorage.setItem("lastStudyDate", today);
+        document.getElementById("streakCount").innerText = streak;
+    }
+}
+
+loadStreak();
+
 
     </script>
 </body>
