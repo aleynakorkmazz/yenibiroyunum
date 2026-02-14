@@ -476,30 +476,6 @@ v5.2 | Motivasyon Edition 🚀
     gameInt=setInterval(upd,150);
 }
 
-/* --- MOTİVASYON SÖZLERİ --- */
-const motivationQuotes = [
-"Bugün zorlanıyorsan yarın güçleneceksin.",
-"Disiplin, motivasyondan daha güçlüdür.",
-"YKS bir maraton, pes eden değil devam eden kazanır.",
-"Her soru seni hedefine bir adım yaklaştırır.",
-"Başarı, vazgeçmeyenlerin ödülüdür.",
-"Küçük ilerlemeler büyük sonuçlar doğurur.",
-"Rakiplerin uyurken sen çalış.",
-"Zor konular güçlü öğrenciler yetiştirir.",
-"Hayalini erteleme, çalışmaya başla.",
-"Sen yaparsın. Nokta."
-];
-
-function showMotivation(){
-    const el = document.getElementById("motivationText");
-    if(!el) return;
-    const random = motivationQuotes[Math.floor(Math.random()*motivationQuotes.length)];
-    el.innerText = "✨ " + random;
-}
-
-showMotivation();
-setInterval(showMotivation, 8000);
-
 </script>
 
 
