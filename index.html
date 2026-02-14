@@ -473,8 +473,10 @@ v5.2 | Motivasyon Edition 🚀
             document.onkeydown=e=>{if(activeG==='pacman'){if(e.key=="ArrowUp")pacman.nY=-1;if(e.key=="ArrowDown")pacman.nY=1;if(e.key=="ArrowLeft")pacman.nX=-1;if(e.key=="ArrowRight")pacman.nX=1;if(e.key=="ArrowUp"||e.key=="ArrowDown")pacman.nX=0;else pacman.nY=0;}}
             gameInt=setInterval(upd,150);
         }
-    </script>
-    /* --- MOTİVASYON SÖZLERİ --- */
+    gameInt=setInterval(upd,150);
+}
+
+/* --- MOTİVASYON SÖZLERİ --- */
 const motivationQuotes = [
 "Bugün zorlanıyorsan yarın güçleneceksin.",
 "Disiplin, motivasyondan daha güçlüdür.",
@@ -490,12 +492,16 @@ const motivationQuotes = [
 
 function showMotivation(){
     const el = document.getElementById("motivationText");
+    if(!el) return;
     const random = motivationQuotes[Math.floor(Math.random()*motivationQuotes.length)];
     el.innerText = "✨ " + random;
 }
 
 showMotivation();
 setInterval(showMotivation, 8000);
+
+</script>
+
 
 </body>
 </html>
