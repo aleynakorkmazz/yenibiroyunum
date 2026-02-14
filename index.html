@@ -135,6 +135,43 @@
     </nav>
 
     <header class="hero">
+        <div id="yksCountdown" style="margin-top:15px;font-weight:700;font-size:1.1rem;"></div>
+
+<p id="motivationText" style="
+margin-top:15px;
+font-weight:600;
+font-size:1.1rem;
+opacity:1;
+transition:opacity 0.6s ease;
+"></p>
+
+<div style="margin-top:20px;">
+    <div id="dailyQuestion" style="font-weight:600;margin-bottom:10px;"></div>
+    <button onclick="toggleAnswer()" style="
+        padding:6px 15px;
+        border:none;
+        border-radius:20px;
+        background:#6c5ce7;
+        color:white;
+        cursor:pointer;
+    ">Cevabı Göster</button>
+    <div id="dailyAnswer" style="margin-top:10px;display:none;font-weight:700;"></div>
+</div>
+
+<div style="margin-top:20px;">
+    🔥 Çalışma Serin: <span id="streakCount">0</span> gün
+    <br>
+    <button onclick="markStudyDay()" style="
+        margin-top:8px;
+        padding:6px 15px;
+        border:none;
+        border-radius:20px;
+        background:#00b894;
+        color:white;
+        cursor:pointer;
+    ">Bugün Çalıştım</button>
+</div>
+
         <p id="motivationText" style="margin-top:20px; font-weight:600; font-size:1.1rem; letter-spacing:0.5px;"></p>
 
         <h1>Hoş Geldiniz</h1>
@@ -487,7 +524,3 @@ setInterval(showMotivation, 8000);
 </html>
 
 
-
-
-
-BU KODDAKİ HİÇ BİR ŞEYİ DEĞİŞTİRMEDEN SADECE MOTİVASYON SÖZLERİ VE SAĞ ÜSTE DE VERSİYON EKLE.
