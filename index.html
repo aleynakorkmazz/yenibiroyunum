@@ -124,22 +124,6 @@
     </style>
 </head>
 <body>
-<div style="
-position:fixed;
-top:20px;
-right:30px;
-background:rgba(255,255,255,0.9);
-backdrop-filter:blur(10px);
-padding:8px 18px;
-border-radius:30px;
-font-weight:700;
-color:#6c5ce7;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-z-index:5000;
-border:1px solid white;
-">
-v5.2 | Motivasyon Edition 🚀
-</div>
 
     <nav>
         <div class="logo" onclick="location.reload()">ALEYNA KORKMAZ</div>
@@ -151,46 +135,10 @@ v5.2 | Motivasyon Edition 🚀
     </nav>
 
     <header class="hero">
+        <p id="motivationText" style="margin-top:20px; font-weight:600; font-size:1.1rem; letter-spacing:0.5px;"></p>
+
         <h1>Hoş Geldiniz</h1>
         <p>Matematik Öğrencisi & Veri Analisti Adayı</p>
-        <p id="motivationText" style="margin-top:20px; font-weight:600; font-size:1.1rem; letter-spacing:0.5px;"></p>
-         <div id="yksCountdown" style="margin-top:15px;font-weight:700;font-size:1.1rem;"></div>
-
-<p id="motivationText" style="
-margin-top:15px;
-font-weight:600;
-font-size:1.1rem;
-opacity:1;
-transition:opacity 0.6s ease;
-"></p>
-
-<div style="margin-top:20px;">
-    <div id="dailyQuestion" style="font-weight:600;margin-bottom:10px;"></div>
-    <button onclick="toggleAnswer()" style="
-        padding:6px 15px;
-        border:none;
-        border-radius:20px;
-        background:#6c5ce7;
-        color:white;
-        cursor:pointer;
-    ">Cevabı Göster</button>
-    <div id="dailyAnswer" style="margin-top:10px;display:none;font-weight:700;"></div>
-</div>
-
-<div style="margin-top:20px;">
-    🔥 Çalışma Serin: <span id="streakCount">0</span> gün
-    <br>
-    <button onclick="markStudyDay()" style="
-        margin-top:8px;
-        padding:6px 15px;
-        border:none;
-        border-radius:20px;
-        background:#00b894;
-        color:white;
-        cursor:pointer;
-    ">Bugün Çalıştım</button>
-</div>
-
     </header>
 
     <div class="container">
@@ -507,124 +455,10 @@ transition:opacity 0.6s ease;
                 ghosts.forEach(g=>{let gx=g.x*T+16,gy=g.y*T+16;ctx.fillStyle=g.s=='s'?'blue':g.c;ctx.beginPath();ctx.arc(gx,gy-4,13,Math.PI,0);ctx.lineTo(gx+13,gy+13);ctx.lineTo(gx-13,gy+13);ctx.fill();});
             }
             document.onkeydown=e=>{if(activeG==='pacman'){if(e.key=="ArrowUp")pacman.nY=-1;if(e.key=="ArrowDown")pacman.nY=1;if(e.key=="ArrowLeft")pacman.nX=-1;if(e.key=="ArrowRight")pacman.nX=1;if(e.key=="ArrowUp"||e.key=="ArrowDown")pacman.nX=0;else pacman.nY=0;}}
-            gameInt=setInterval(upd,150);
-        }
-    gameInt=setInterval(upd,150);
-}
-/* ============================= */
-/*        YKS GERİ SAYIM        */
-/* ============================= */
-
-const yksDate = new Date("June 14, 2026 10:15:00").getTime();
-
-function updateCountdown(){
-    const now = new Date().getTime();
-    const distance = yksDate - now;
-
-    const days = Math.floor(distance / (1000*60*60*24));
-    document.getElementById("yksCountdown").innerText =
-        "🎯 YKS 2026'ya " + days + " gün kaldı!";
+         gameInt=setInterval(upd,150);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 60000);
-
-
-/* ============================= */
-/*      MOTİVASYON (FADE)       */
-/* ============================= */
-
-const motivationQuotes = [
-"Bugün zorlanıyorsan yarın güçleneceksin.",
-"Disiplin, motivasyondan daha güçlüdür.",
-"YKS bir maraton, pes eden değil devam eden kazanır.",
-"Her soru seni hedefine bir adım yaklaştırır.",
-"Başarı, vazgeçmeyenlerin ödülüdür.",
-"Küçük ilerlemeler büyük sonuçlar doğurur.",
-"Rakiplerin uyurken sen çalış.",
-"Zor konular güçlü öğrenciler yetiştirir.",
-"Hayalini erteleme, çalışmaya başla.",
-"Sen yaparsın. Nokta."
-];
-
-function showMotivation(){
-    const el = document.getElementById("motivationText");
-    el.style.opacity = 0;
-
-    setTimeout(()=>{
-        const random = motivationQuotes[Math.floor(Math.random()*motivationQuotes.length)];
-        el.innerText = "✨ " + random;
-        el.style.opacity = 1;
-    },600);
-}
-
-showMotivation();
-setInterval(showMotivation, 8000);
-
-
-/* ============================= */
-/*        GÜNÜN SORUSU          */
-/* ============================= */
-
-const dailyQuestions = [
-{
-q:"f(x)=2x+3 ise f(5) kaçtır?",
-a:"f(5)=2.5+3=13"
-},
-{
-q:"log(100) kaçtır? (10 tabanında)",
-a:"2"
-},
-{
-q:"Bir üçgende iç açıların toplamı kaçtır?",
-a:"180°"
-}
-];
-
-const todayIndex = new Date().getDate() % dailyQuestions.length;
-document.getElementById("dailyQuestion").innerText =
-"🧠 Günün Sorusu: " + dailyQuestions[todayIndex].q;
-
-document.getElementById("dailyAnswer").innerText =
-"✅ Cevap: " + dailyQuestions[todayIndex].a;
-
-function toggleAnswer(){
-    const ans = document.getElementById("dailyAnswer");
-    ans.style.display = ans.style.display === "none" ? "block" : "none";
-}
-
-
-/* ============================= */
-/*         STREAK SİSTEMİ       */
-/* ============================= */
-
-function loadStreak(){
-    const lastDate = localStorage.getItem("lastStudyDate");
-    const streak = localStorage.getItem("studyStreak") || 0;
-    document.getElementById("streakCount").innerText = streak;
-
-    if(lastDate){
-        const diff = (new Date() - new Date(lastDate)) / (1000*60*60*24);
-        if(diff > 1){
-            localStorage.setItem("studyStreak",0);
-            document.getElementById("streakCount").innerText = 0;
-        }
-    }
-}
-
-function markStudyDay(){
-    const today = new Date().toDateString();
-    const lastDate = localStorage.getItem("lastStudyDate");
-    let streak = parseInt(localStorage.getItem("studyStreak")) || 0;
-
-    if(lastDate !== today){
-        streak++;
-        localStorage.setItem("studyStreak", streak);
-        localStorage.setItem("lastStudyDate", today);
-        document.getElementById("streakCount").innerText = streak;
-    }
-}
-/* --- MOTİVASYON SİSTEMİ --- */
+/* --- MOTİVASYON SÖZLERİ --- */
 const motivationQuotes = [
 "Bugün zorlanıyorsan yarın güçleneceksin.",
 "Disiplin, motivasyondan daha güçlüdür.",
@@ -648,12 +482,12 @@ function showMotivation(){
 showMotivation();
 setInterval(showMotivation, 8000);
 
-loadStreak();
-
-</script>
-
-
+    </script>
 </body>
 </html>
 
 
+
+
+
+BU KODDAKİ HİÇ BİR ŞEYİ DEĞİŞTİRMEDEN SADECE MOTİVASYON SÖZLERİ VE SAĞ ÜSTE DE VERSİYON EKLE.
