@@ -3,192 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aleyna Korkmaz | Oyun1 v4.2 (CineBot+)</title>
+    <title>Aleyna Korkmaz | YKS Dev Arşiv v5.1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6c5ce7;
             --secondary: #00cec9;
-            --accent: #fd79a8;
+            --accent: #ff7675;
             --dark: #2d3436;
             --light: #dfe6e9;
-            --bg-grad: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         }
 
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: var(--bg-grad); color: var(--dark); min-height: 100vh; user-select: none; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0; padding: 0;
+            background: linear-gradient(-45deg, #a8c0ff, #3f2b96, #ee9ca7, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-        /* VERSİYON ROZETİ */
-        .version-badge { position: fixed; top: 15px; right: 20px; background: rgba(0,0,0,0.8); color: #00cec9; padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; z-index: 2000; border: 1px solid #00cec9; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
         /* NAVİGASYON */
-        nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); cursor: pointer; }
-        .nav-links { display: flex; gap: 30px; margin-right: 60px; }
-        .nav-item { cursor: pointer; font-weight: 600; transition: 0.3s; color: var(--dark); }
-        .nav-item:hover { color: var(--primary); }
+        nav {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1000px;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+            padding: 10px 30px; border-radius: 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: var(--shadow); z-index: 1000; border: 1px solid var(--glass-border);
+        }
+        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-item { cursor: pointer; font-weight: 600; padding: 8px 16px; border-radius: 20px; transition: 0.3s; color: var(--dark); font-size: 0.9rem; }
+        .nav-item:hover { background: var(--primary); color: white; }
 
         /* HERO */
-        header.hero { text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 40px; }
-        .hero h1 { font-size: 3rem; margin: 0; font-weight: 800; }
-        .tagline { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-top: 10px; display: inline-block; }
+        header.hero { text-align: center; padding: 140px 20px 60px; color: white; position: relative; }
+        .hero h1 { font-size: 3.5rem; margin: 0; font-weight: 800; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; font-weight: 300; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
 
         /* KARTLAR */
-        .home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .card-icon { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
-        .icon-notes { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
-        .icon-games { background: linear-gradient(45deg, #a18cd1, #fbc2eb); }
-        .icon-movies { background: linear-gradient(45deg, #84fab0, #8fd3f4); }
-        .card-body { padding: 25px; text-align: center; }
-        .card-body h3 { margin: 0 0 10px; color: var(--dark); font-size: 1.5rem; }
-        .card-body p { color: #777; font-size: 0.9rem; margin: 0; }
+        .home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .feature-card {
+            background: var(--glass); backdrop-filter: blur(16px);
+            border-radius: 24px; overflow: hidden;
+            box-shadow: var(--shadow); transition: 0.4s; cursor: pointer; border: 1px solid white;
+        }
+        .feature-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .card-header-visual { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
+        .bg-notes { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .bg-games { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+        .bg-movies { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .card-body { padding: 30px; text-align: center; }
+        .card-body h3 { margin: 0 0 10px; color: var(--dark); font-size: 1.6rem; font-weight: 800; }
+        .card-body p { color: #636e72; font-size: 0.95rem; line-height: 1.6; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
-        .modal-content { background: #f8f9fa; width: 95%; max-width: 1200px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; display: flex; flex-direction: column; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #555; z-index: 100; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
+        .modal-content { background: #fdfdfd; width: 95%; max-width: 1300px; max-height: 90vh; border-radius: 30px; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column; padding: 0; border: 1px solid white; }
+        .modal-header-bar { padding: 20px 30px; background: white; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; border-radius: 30px 30px 0 0; }
+        .close-btn { font-size: 2rem; cursor: pointer; color: #ff7675; transition: 0.2s; }
 
         /* DERS BUTONLARI */
-        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; padding: 20px; }
-        .sub-btn { padding: 15px; text-align: center; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s; font-weight: 600; color: var(--dark); border-left: 5px solid transparent; }
-        .sub-btn:hover { transform: scale(1.05); background: #fff; }
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; padding: 10px; }
+        .sub-btn { padding: 15px; text-align: center; background: white; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; font-weight: 700; color: var(--dark); border: 2px solid transparent; display: flex; flex-direction: column; gap: 5px; align-items: center; }
+        .sub-btn:hover { border-color: var(--primary); transform: translateY(-3px); background: #f8f9fa; }
+        .sub-btn i { font-size: 1.5rem; color: var(--primary); }
 
         /* NOT KARTLARI */
-        .topic-container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .topic-group { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .topic-head { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; display: flex; justify-content: space-between; }
-        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; color: white; background: #b2bec3; vertical-align: middle; }
-        .tag.tyt { background: #00b894; } .tag.ayt { background: #fd79a8; }
-        .flashcards { display: grid; gap: 10px; }
-        .card { background: #fdfdfd; border: 1px solid #f0f0f0; padding: 15px; border-radius: 8px; border-left: 4px solid var(--secondary); transition: 0.2s; }
-        .card:hover { transform: translateX(5px); background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .card h5 { margin: 0 0 5px; color: #d63031; font-size: 1rem; }
-        .card p { font-size: 0.9rem; color: #555; margin: 0; line-height: 1.5; }
+        .topic-container { padding: 30px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .topic-group { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition:0.3s; height: fit-content; }
+        .topic-group:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .topic-head { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .tag { font-size: 0.7rem; padding: 4px 8px; border-radius: 6px; color: white; letter-spacing: 1px; }
+        .tag.tyt { background: linear-gradient(45deg, #00b894, #55efc4); } 
+        .tag.ayt { background: linear-gradient(45deg, #d63031, #ff7675); }
+        
+        .flashcards { display: flex; flex-direction: column; gap: 10px; }
+        .card { background: #fdfdfd; padding: 12px; border-radius: 10px; border-left: 4px solid var(--secondary); transition: 0.2s; border: 1px solid #f5f5f5; }
+        .card:hover { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .card h5 { margin: 0 0 5px; color: #2d3436; font-size: 0.95rem; font-weight: 700; }
+        .card p { font-size: 0.85rem; color: #636e72; margin: 0; line-height: 1.4; }
 
         /* OYUN ALANI */
-        #game-modal-content { background: #1a1a1a; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 20px; }
-        canvas { background: #000; border: 4px solid #444; border-radius: 8px; margin: 10px 0; box-shadow: 0 0 30px rgba(108, 92, 231, 0.2); }
-        .game-controls { display: flex; gap: 30px; font-family: 'Courier New', monospace; font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; }
+        #game-modal-content { background: #151515; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; min-height: 100%; justify-content: center; }
+        canvas { background: #000; border: 4px solid #333; border-radius: 12px; margin: 10px 0; box-shadow: 0 0 40px rgba(108, 92, 231, 0.4); }
+        .game-controls { display: flex; gap: 30px; font-family: 'Courier New', monospace; font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; background: #222; padding: 10px 30px; border-radius: 30px; }
         .stat-box span { color: var(--secondary); }
         .game-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); flex-direction: column; justify-content: center; align-items: center; z-index: 50; }
-        .btn-play { background: var(--success); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; margin: 10px; font-weight: bold; }
-        .btn-exit { background: transparent; color: white; border: 2px solid white; padding: 10px 30px; border-radius: 50px; cursor: pointer; }
+        .btn-play { background: var(--success); color: white; padding: 15px 50px; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; margin: 10px; font-weight: bold; }
+        .btn-exit { background: transparent; color: white; border: 2px solid white; padding: 10px 40px; border-radius: 50px; cursor: pointer; margin-top:10px; }
 
-        /* CINEBOT STYLES (YENİLENDİ) */
-        .ai-widget-btn { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; cursor: pointer; box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4); z-index: 3000; animation: pulse 2s infinite; }
-        .chat-container { position: fixed; bottom: 110px; right: 30px; width: 360px; height: 550px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.25); z-index: 2999; display: none; flex-direction: column; overflow: hidden; border: 1px solid #eee; }
-        .chat-header { background: var(--primary); color: white; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* Sekmeler */
-        .chat-tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #eee; }
-        .chat-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 0.9rem; color: #777; transition: 0.3s; }
-        .chat-tab.active { color: var(--primary); font-weight: bold; border-bottom: 3px solid var(--primary); background: white; }
-
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #fff; }
-        .msg { padding: 10px 15px; border-radius: 15px; max-width: 85%; font-size: 0.9rem; line-height: 1.4; }
-        .bot { background: #f1f0f0; color: #333; align-self: flex-start; }
+        /* CINEBOT */
+        .ai-widget-btn { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.5); z-index: 3000; animation: pulse 2s infinite; border: 2px solid white; }
+        .chat-container { position: fixed; bottom: 120px; right: 30px; width: 380px; height: 600px; background: white; border-radius: 25px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); z-index: 2999; display: none; flex-direction: column; overflow: hidden; border: 1px solid #eee; }
+        .chat-header { background: var(--primary); color: white; padding: 20px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #fdfdfd; }
+        .msg { padding: 12px 18px; border-radius: 20px; max-width: 85%; font-size: 0.95rem; line-height: 1.5; }
+        .bot { background: #f1f2f6; color: #333; align-self: flex-start; }
         .user { background: var(--primary); color: white; align-self: flex-end; }
-        .chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 10px; }
-        .chat-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
-        .chat-send { background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
-        
-        /* Film Kartı ve Listesi */
-        .movie-card-chat { background: #f8f9fa; border: 1px solid #eee; padding: 10px; border-radius: 8px; margin-top: 5px; font-size: 0.85rem; }
-        .btn-sm { font-size: 0.8rem; padding: 8px 10px; border-radius: 5px; border:none; cursor: pointer; margin-top: 5px; width: 100%; display:block; }
-        .btn-watch { background: #00b894; color: white; margin-bottom: 5px; }
-        .btn-add { background: #fd79a8; color: white; }
-        .btn-add:hover { background: #e84393; }
+        .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 10px; background: white; }
+        .chat-input { flex: 1; padding: 12px 20px; border: 1px solid #dfe6e9; border-radius: 30px; outline: none; }
+        .chat-send { background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; }
+        .movie-card-chat { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 12px; margin-top: 10px; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .btn-sm { font-size: 0.85rem; padding: 10px; border-radius: 10px; border:none; cursor: pointer; margin-top: 8px; width: 100%; display:block; font-weight: 600; }
+        .btn-watch { background: #00b894; color: white; }
+        .btn-add { background: #dfe6e9; color: var(--dark); }
 
-        .watchlist-container { display: none; padding: 10px; overflow-y: auto; flex:1; background: white; }
-        .w-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
-        .w-info span { display: block; font-weight: 600; font-size: 0.9rem; color: var(--dark); }
-        .w-info small { font-size: 0.75rem; color: #888; }
-        .w-remove { color: #ff7675; cursor: pointer; padding: 5px; }
-
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <div class="version-badge">v4.2.0</div>
-
     <nav>
-        <div class="logo" onclick="location.reload()">Aleyna Korkmaz</div>
+        <div class="logo" onclick="location.reload()">ALEYNA KORKMAZ</div>
         <div class="nav-links">
-            <div class="nav-item" onclick="openNotes()">Ders Notları</div>
-            <div class="nav-item" onclick="openGameMenu()">Oyunlar</div>
-            <div class="nav-item" onclick="toggleChat(true)">CineBot AI</div>
+            <div class="nav-item" onclick="openNotes()"><i class="fa-solid fa-book"></i> Ders Notları</div>
+            <div class="nav-item" onclick="openGameMenu()"><i class="fa-solid fa-gamepad"></i> Oyunlar</div>
+            <div class="nav-item" onclick="toggleChat(true)"><i class="fa-solid fa-robot"></i> CineBot</div>
         </div>
     </nav>
 
     <header class="hero">
         <h1>Hoş Geldiniz</h1>
         <p>Matematik Öğrencisi & Veri Analisti Adayı</p>
-        <div class="tagline">Oyun1 | YKS Rehberi | Python | SQL</div>
     </header>
 
     <div class="container">
         <div class="home-grid">
             <div class="feature-card" onclick="openNotes()">
-                <div class="card-icon icon-notes"><i class="fa-solid fa-book-open"></i></div>
-                <div class="card-body"><h3>Ders Notları</h3><p>YKS (TYT-AYT) için genişletilmiş ve detaylı not kartları.</p></div>
+                <div class="card-header-visual bg-notes"><i class="fa-solid fa-book-open"></i></div>
+                <div class="card-body">
+                    <h3>YKS Ders Notları (Full)</h3>
+                    <p>Tüm dersler (Mat, Fen, Sosyal) için sınav odaklı, detaylı ve sözel anlatımlı dev arşiv.</p>
+                </div>
             </div>
             <div class="feature-card" onclick="openGameMenu()">
-                <div class="card-icon icon-games"><i class="fa-solid fa-gamepad"></i></div>
-                <div class="card-body"><h3>Oyunlar (Oyun1)</h3><p>Tamir edilmiş, 60 FPS akıcı Yılan, Tetris ve Pacman.</p></div>
+                <div class="card-header-visual bg-games"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="card-body">
+                    <h3>Oyunlar (Oyun1)</h3>
+                    <p>60 FPS akıcı 3D Yılan, Pro Tetris ve Arcade Pacman ile mola ver.</p>
+                </div>
             </div>
             <div class="feature-card" onclick="toggleChat(true)">
-                <div class="card-icon icon-movies"><i class="fa-solid fa-robot"></i></div>
-                <div class="card-body"><h3>CineBot AI</h3><p>Yapay zeka film önerileri, izleme listesi ve konular.</p></div>
+                <div class="card-header-visual bg-movies"><i class="fa-solid fa-film"></i></div>
+                <div class="card-body">
+                    <h3>CineBot AI</h3>
+                    <p>Yapay zeka film önerileri, konuları ve izleme listesi.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="notesModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('notesModal')">&times;</span>
-            <div style="padding: 20px;">
-                <h2 style="text-align:center;">Ders Seçiniz</h2>
+            <div class="modal-header-bar">
+                <h2 style="margin:0; color:var(--primary);">Ders Seçiniz</h2>
+                <span class="close-btn" onclick="closeModal('notesModal')">&times;</span>
+            </div>
+            <div style="padding: 30px;">
                 <div class="subject-grid">
-                    <div class="sub-btn" style="border-left-color:#e17055" onclick="loadSubject('Matematik')">Matematik</div>
-                    <div class="sub-btn" style="border-left-color:#0984e3" onclick="loadSubject('Fizik')">Fizik</div>
-                    <div class="sub-btn" style="border-left-color:#6c5ce7" onclick="loadSubject('Kimya')">Kimya</div>
-                    <div class="sub-btn" style="border-left-color:#00b894" onclick="loadSubject('Biyoloji')">Biyoloji</div>
-                    <div class="sub-btn" style="border-left-color:#fdcb6e" onclick="loadSubject('Tarih')">Tarih</div>
-                    <div class="sub-btn" style="border-left-color:#e84393" onclick="loadSubject('Coğrafya')">Coğrafya</div>
-                    <div class="sub-btn" style="border-left-color:#636e72" onclick="loadSubject('Edebiyat')">Edebiyat</div>
+                    <div class="sub-btn" onclick="loadSubject('Matematik')"><i class="fa-solid fa-calculator"></i>Matematik</div>
+                    <div class="sub-btn" onclick="loadSubject('Fizik')"><i class="fa-solid fa-atom"></i>Fizik</div>
+                    <div class="sub-btn" onclick="loadSubject('Kimya')"><i class="fa-solid fa-flask"></i>Kimya</div>
+                    <div class="sub-btn" onclick="loadSubject('Biyoloji')"><i class="fa-solid fa-dna"></i>Biyoloji</div>
+                    <div class="sub-btn" onclick="loadSubject('Tarih')"><i class="fa-solid fa-landmark"></i>Tarih</div>
+                    <div class="sub-btn" onclick="loadSubject('Coğrafya')"><i class="fa-solid fa-globe"></i>Coğrafya</div>
+                    <div class="sub-btn" onclick="loadSubject('Edebiyat')"><i class="fa-solid fa-feather"></i>Edebiyat</div>
                 </div>
+                <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+                <h2 id="subjectTitle" style="color: var(--dark); font-size:1.5rem; margin-bottom:20px;">Konular</h2>
                 <div id="topicContainer" class="topic-container"></div>
             </div>
         </div>
     </div>
 
     <div id="gamesMenuModal" class="modal">
-        <div class="modal-content" style="max-width: 400px; text-align: center; padding: 40px; background:#2d3436;">
-            <span class="close-btn" style="color:white;" onclick="closeModal('gamesMenuModal')">&times;</span>
-            <h2 style="color:white;">Oyun Seç</h2>
-            <button class="btn-play" style="width:100%; background:#6c5ce7;" onclick="initGame('snake')">Neon Yılan</button>
-            <button class="btn-play" style="width:100%; background:#0984e3;" onclick="initGame('tetris')">Pro Tetris</button>
-            <button class="btn-play" style="width:100%; background:#fd79a8;" onclick="initGame('pacman')">Arcade Pacman</button>
+        <div class="modal-content" style="max-width: 450px; text-align: center; padding: 50px; background:#2d3436; border:none;">
+            <span class="close-btn" style="color:white; top:20px; right:20px;" onclick="closeModal('gamesMenuModal')">&times;</span>
+            <h2 style="color:white; margin-bottom:30px;">Oyun Seç</h2>
+            <div style="display: grid; gap: 20px;">
+                <button class="btn-play" style="background:#6c5ce7; width:100%; margin:0;" onclick="initGame('snake')">🐍 Neon Yılan</button>
+                <button class="btn-play" style="background:#0984e3; width:100%; margin:0;" onclick="initGame('tetris')">🧱 Pro Tetris</button>
+                <button class="btn-play" style="background:#fd79a8; width:100%; margin:0;" onclick="initGame('pacman')">👻 Arcade Pacman</button>
+            </div>
         </div>
     </div>
 
     <div id="gameModal" class="modal" style="background: black;">
         <div id="game-modal-content">
-            <div style="width: 100%; display:flex; justify-content:space-between; align-items:center;">
-                <h3 id="gameTitle" style="margin:0; color:#f1c40f;">Oyun</h3>
+            <div style="width: 100%; text-align: right; max-width:600px;">
                 <span onclick="stopGame()" style="color:white; cursor:pointer; border:1px solid white; padding:5px 15px; border-radius:20px;">KAPAT</span>
             </div>
             <div style="position: relative;">
                 <div id="gameOverOverlay" class="game-overlay">
-                    <h1 style="color:var(--accent); font-size:3rem;">OYUN BİTTİ</h1>
-                    <p style="color:white; font-size:1.5rem;">SKOR: <span id="finalScore">0</span></p>
+                    <h1 style="color: var(--accent); font-size: 3rem;">BİTTİ</h1>
+                    <p style="color: white; font-size: 1.5rem;">SKOR: <span id="finalScore">0</span></p>
                     <button class="btn-play" onclick="restart()">TEKRAR</button>
-                    <button class="btn-exit" onclick="stopGame()">ÇIKIŞ</button>
                 </div>
                 <canvas id="gameCanvas"></canvas>
             </div>
@@ -197,9 +218,9 @@
                 <div class="stat-box">Lvl: <span id="levelVal">1</span></div>
                 <div class="stat-box" id="livesContainer">Can: <span id="livesVal">3</span></div>
             </div>
-            <div id="nextPieceContainer" style="display:none; position:absolute; right:-100px; top:50px; border:1px solid #444; padding:10px; background:#111;">
-                <div style="font-size:0.8rem; color:#aaa;">SONRAKİ</div>
-                <canvas id="nextCanvas" width="80" height="80"></canvas>
+            <div id="nextPieceContainer" style="display:none; position:absolute; right:20px; top:100px; border:2px solid #444; padding:15px; background:#111; border-radius:10px;">
+                <div style="font-size:0.8rem; color:#aaa; margin-bottom:10px;">SONRAKİ</div>
+                <canvas id="nextCanvas" width="80" height="80" style="border:none; background:transparent;"></canvas>
             </div>
         </div>
     </div>
@@ -207,155 +228,176 @@
     <div class="ai-widget-btn" onclick="toggleChat()"><i class="fa-solid fa-comment-dots"></i></div>
     <div id="cineBot" class="chat-container">
         <div class="chat-header"><span><i class="fa-solid fa-film"></i> CineBot</span><span style="cursor:pointer" onclick="toggleChat()">&times;</span></div>
-        <div class="chat-tabs">
-            <div class="chat-tab active" onclick="switchTab('chat')">Sohbet</div>
-            <div class="chat-tab" onclick="switchTab('list')">İzleme Listem</div>
+        <div class="chat-tabs" style="display:flex; background:#f9f9f9; border-bottom:1px solid #eee;">
+            <div class="chat-tab active" style="flex:1; padding:10px; text-align:center; cursor:pointer; color:var(--primary); font-weight:bold; border-bottom:2px solid var(--primary);" onclick="switchTab('chat')">Sohbet</div>
+            <div class="chat-tab" style="flex:1; padding:10px; text-align:center; cursor:pointer;" onclick="switchTab('list')">Listem</div>
         </div>
-        
-        <div id="chatView" class="chat-body"><div class="msg bot">Merhaba! Komedi, Korku, Bilim Kurgu vb. türlerde film önerebilirim. Tür yaz, senin için bulayım!</div></div>
-        
-        <div id="chatInputArea" class="chat-input-area">
-            <input type="text" id="chatInput" class="chat-input" placeholder="Tür yaz..." onkeypress="handleEnter(event)">
+        <div id="chatView" class="chat-body"><div class="msg bot">Merhaba! Film türü yaz (Komedi, Korku vb.), sana konusunu anlatıp önereyim.</div></div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Yaz..." onkeypress="handleEnter(event)">
             <button class="chat-send" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
-
-        <div id="listView" class="watchlist-container">
-            <p style="text-align:center; color:#999; margin-top:20px;">Listeniz boş.</p>
+        <div id="listView" class="watchlist-container" style="display:none; padding:15px; overflow-y:auto; flex:1;">
+            <p style="text-align:center; color:#999; margin-top:20px;">Boş.</p>
         </div>
     </div>
 
     <script>
-        /* --- MÜFREDAT VERİTABANI --- */
+        /* --- MEGA MÜFREDAT VERİTABANI (AZALTILMAMIŞ) --- */
         const curriculum = {
             "Matematik": [
-                {t:"Temel Kavramlar", tag:"TYT", c:[{h:"Rakamlar", t:"0,1,2,3...9 kümesine rakam denir. İşlemlerde basamak değerine dikkat edilmelidir."},{h:"Asal Sayılar", t:"Sadece 1'e ve kendisine bölünen, 1'den büyük doğal sayılardır (2, 3, 5, 7...)."}]},
-                {t:"Sayı Basamakları", tag:"TYT", c:[{h:"Çözümleme", t:"ab = 10a + b şeklinde yazılır. Sayıların basamak değerleri toplamı sayının kendisine eşittir."}]},
-                {t:"Bölme-Bölünebilme", tag:"TYT", c:[{h:"3 ile Bölünebilme", t:"Rakamları toplamı 3'ün katı olan sayılar 3'e tam bölünür."},{h:"5 ile Bölünebilme", t:"Birler basamağı 0 veya 5 olan sayılar 5'e tam bölünür."}]},
-                {t:"Fonksiyonlar", tag:"TYT-AYT", c:[{h:"Birebir Fonksiyon", t:"Tanım kümesindeki her elemanın görüntüsünün farklı olduğu fonksiyondur."},{h:"Ters Fonksiyon", t:"f(x)=y ise f⁻¹(y)=x olur. Grafiği y=x doğrusuna göre simetriktir."}]},
-                {t:"Türev (AYT)", tag:"AYT", c:[{h:"Türev ve Eğim", t:"Bir fonksiyonun bir noktadaki türevi, o noktadan çizilen teğetin eğimine eşittir."},{h:"Ekstremum Noktalar", t:"Türevin işaret değiştirdiği (sıfır olduğu) noktalar yerel maksimum veya minimumdur."}]},
-                {t:"İntegral (AYT)", tag:"AYT", c:[{h:"Alan Hesabı", t:"Belirli integral, bir eğrinin altında kalan alanı hesaplamak için kullanılır."}]}
+                {t:"Temel Kavramlar", tag:"TYT", c:[{h:"Rakam",t:"{0..9} kümesi."},{h:"Asal Sayı",t:"Sadece 1 ve kendine bölünür (2,3,5..). En küçük asal 2'dir."},{h:"Ardışık Sayılar",t:"Belirli kurala göre art arda gelen sayılardır."}]},
+                {t:"Sayı Basamakları", tag:"TYT", c:[{h:"Çözümleme",t:"ab = 10a + b şeklinde yazılır."},{h:"Basamak Değeri",t:"Rakamın bulunduğu yere göre değeridir."}]},
+                {t:"Bölme-Bölünebilme", tag:"TYT", c:[{h:"3 ile",t:"Rakamlar toplamı 3'ün katı olmalı."},{h:"4 ile",t:"Son iki basamak 4'ün katı olmalı."},{h:"5 ile",t:"Son basamak 0 veya 5 olmalı."}]},
+                {t:"EBOB-EKOK", tag:"TYT", c:[{h:"EBOB",t:"En büyük ortak bölen."},{h:"EKOK",t:"En küçük ortak kat."},{h:"Kural",t:"İki sayının çarpımı EBOB ve EKOK çarpımına eşittir."}]},
+                {t:"Rasyonel Sayılar", tag:"TYT", c:[{h:"Tanım",t:"a/b şeklinde yazılan sayılar (b sıfır olamaz)."}]},
+                {t:"Mutlak Değer", tag:"TYT", c:[{h:"Tanım",t:"Sayı doğrusunda 0'a olan uzaklık. Asla negatif olamaz."}]},
+                {t:"Üslü Sayılar", tag:"TYT", c:[{h:"Çarpma",t:"Tabanlar aynıysa üsler toplanır."},{h:"Bölme",t:"Tabanlar aynıysa üsler çıkarılır."}]},
+                {t:"Köklü Sayılar", tag:"TYT", c:[{h:"Tanım",t:"Üslü sayının ters işlemidir."}]},
+                {t:"Çarpanlara Ayırma", tag:"TYT", c:[{h:"İki Kare Farkı",t:"a²-b² = (a-b)(a+b)"},{h:"Tam Kare",t:"(a+b)² = a²+2ab+b²"}]},
+                {t:"Fonksiyonlar", tag:"TYT-AYT", c:[{h:"Tanım",t:"A kümesindeki her elemanı B kümesinde yalnız bir elemana eşleyen bağıntı."},{h:"Birebir",t:"Her x farklı y'ye gider."}]},
+                {t:"Polinomlar", tag:"AYT", c:[{h:"Derece",t:"En büyük üs polinomun derecesidir."},{h:"Kalan",t:"P(x)'in (x-a) ile bölümünden kalan P(a)'dır."}]},
+                {t:"2. Derece Denklem", tag:"AYT", c:[{h:"Diskriminant (Delta)",t:"b² - 4ac formülüyle bulunur."},{h:"Kökler",t:"x = (-b ± √Delta) / 2a"}]},
+                {t:"Parabol", tag:"AYT", c:[{h:"Tepe Noktası",t:"T(r,k). r = -b/2a formülüyle bulunur."},{h:"Yön",t:"a>0 ise kollar yukarı, a<0 ise aşağı."}]},
+                {t:"Trigonometri", tag:"AYT", c:[{h:"Sinüs",t:"Karşı dik kenar / Hipotenüs"},{h:"Kosinüs",t:"Komşu dik kenar / Hipotenüs"},{h:"Birim Çember",t:"x² + y² = 1 denklemi."}]},
+                {t:"Logaritma", tag:"AYT", c:[{h:"Tanım",t:"Üstel fonksiyonun tersidir."},{h:"Kural",t:"log(a.b) = log a + log b"}]},
+                {t:"Limit", tag:"AYT", c:[{h:"Belirsizlik",t:"0/0 durumunda çarpanlara ayırma veya L'Hospital."}]},
+                {t:"Türev", tag:"AYT", c:[{h:"Anlam",t:"Bir eğrinin bir noktadaki teğetinin eğimidir."},{h:"Ekstremum",t:"Türevin 0 olduğu noktalar (max/min)."}]},
+                {t:"İntegral", tag:"AYT", c:[{h:"Belirli İntegral",t:"Bir eğrinin altında kalan alanı verir."},{h:"Riemann",t:"Alan hesabı yaklaşımı."}]}
             ],
             "Fizik": [
-                {t:"Fizik Bilimine Giriş", tag:"TYT", c:[{h:"Temel Büyüklükler", t:"Kısa Muz (Kütle, Işık Şiddeti, Sıcaklık, Akım, Madde Mik., Uzunluk, Zaman)."}]},
-                {t:"Madde ve Özellikleri", tag:"TYT", c:[{h:"Özkütle (Yoğunluk)", t:"d = m / V formülü ile bulunur. Maddeler için ayırt edici bir özelliktir."}]},
-                {t:"Kuvvet ve Hareket", tag:"TYT", c:[{h:"Newton'un 2. Yasası", t:"F_net = m . a (Net kuvvet, kütle ile ivmenin çarpımına eşittir)."}]},
-                {t:"İş, Güç, Enerji", tag:"TYT", c:[{h:"Mekanik Enerji", t:"Kinetik ve Potansiyel enerjinin toplamıdır. Sürtünmesiz ortamda korunur."}]},
-                {t:"Elektrik", tag:"TYT", c:[{h:"Ohm Yasası", t:"V = I . R (Gerilim = Akım x Direnç). Devrelerin temel yasasıdır."}]},
-                {t:"Optik", tag:"TYT", c:[{h:"Yansıma Kanunları", t:"Gelme açısı yansıma açısına eşittir. Işık aynı açıyla geri döner."}]}
+                {t:"Fizik Bilimine Giriş", tag:"TYT", c:[{h:"Temel Büyüklükler",t:"Kısa Muz (Kütle, Işık Şiddeti, Sıcaklık, Akım, Madde, Uzunluk, Zaman)."}]},
+                {t:"Madde ve Özellikleri", tag:"TYT", c:[{h:"Özkütle",t:"d = m / V. Maddeler için ayırt edicidir."},{h:"Adhezyon",t:"Farklı moleküllerin yapışması."}]},
+                {t:"Hareket", tag:"TYT", c:[{h:"Hız",t:"Birim zamandaki yer değiştirme."},{h:"İvme",t:"Birim zamandaki hız değişimi."}]},
+                {t:"Dinamik", tag:"TYT", c:[{h:"Newton 1. Yasa",t:"Eylemsizlik (Durumunu koruma isteği)."}]},{t:"İş-Güç-Enerji", tag:"TYT", c:[{h:"Kinetik E.",t:"1/2 mv²"},{h:"Potansiyel E.",t:"mgh"}]},
+                {t:"Isı ve Sıcaklık", tag:"TYT", c:[{h:"Özısı",t:"1 gram maddenin sıcaklığını 1 derece artırmak için gereken ısı."}]},
+                {t:"Elektrostatik", tag:"TYT", c:[{h:"Yük Korunumu",t:"Toplam yük değişmez."}]},
+                {t:"Elektrik", tag:"TYT", c:[{h:"Ohm Yasası",t:"V = I.R"}]},
+                {t:"Optik", tag:"TYT", c:[{h:"Yansıma",t:"Gelme açısı yansıma açısına eşittir."}]},
+                {t:"Vektörler", tag:"AYT", c:[{h:"Bileşke",t:"Uç uca ekleme yöntemi."}]},
+                {t:"Atışlar", tag:"AYT", c:[{h:"Serbest Düşme",t:"h = 5t² formülü."}]},
+                {t:"İtme ve Momentum", tag:"AYT", c:[{h:"Momentum",t:"P = m.v. Korunur."}]},
+                {t:"Elektrik Alan", tag:"AYT", c:[{h:"Formül",t:"E = F/q"}]},
+                {t:"Manyetizma", tag:"AYT", c:[{h:"Sağ El Kuralı",t:"Akım ve manyetik alan yönü bulunur."}]},
+                {t:"Çembersel Hareket", tag:"AYT", c:[{h:"Merkezcil Kuvvet",t:"F = mv²/r. Merkeze doğrudur."}]},
+                {t:"Modern Fizik", tag:"AYT", c:[{h:"Fotoelektrik",t:"Işığın metalden elektron sökmesi."}]}
             ],
             "Kimya": [
-                {t:"Atom ve Yapısı", tag:"TYT", c:[{h:"İzotop Atomlar", t:"Proton sayıları aynı, nötron sayıları farklı olan atomlardır."}]},
-                {t:"Periyodik Sistem", tag:"TYT", c:[{h:"Elektronegatiflik", t:"Bir atomun bağ elektronlarını kendine çekme yeteneğidir. Sağa ve yukarı artar."}]},
-                {t:"Kimyasal Türler", tag:"TYT", c:[{h:"İyonik Bağ", t:"Metal ve ametal arasında elektron alışverişi ile oluşur."},{h:"Kovalent Bağ", t:"Ametaller arasında elektron ortaklaşması ile oluşur."}]},
-                {t:"Gazlar", tag:"AYT", c:[{h:"İdeal Gaz Denklemi", t:"P.V = n.R.T (Basınç x Hacim = Mol x Sabit x Sıcaklık)."}]},
-                {t:"Organik Kimya", tag:"AYT", c:[{h:"Alkanlar", t:"CnH2n+2 genel formülüne sahip doymuş hidrokarbonlardır."}]}
+                {t:"Kimya Bilimi", tag:"TYT", c:[{h:"Simya",t:"Kimyanın öncüsüdür, bilim değildir."}]},
+                {t:"Atom", tag:"TYT", c:[{h:"Proton",t:"Çekirdekte, pozitif yüklü."},{h:"Elektron",t:"Yörüngede, negatif yüklü."}]},
+                {t:"Periyodik Sistem", tag:"TYT", c:[{h:"Grup",t:"Dikey sütunlar."},{h:"Periyot",t:"Yatay sıralar."}]},
+                {t:"Kimyasal Türler", tag:"TYT", c:[{h:"İyonik",t:"Metal + Ametal (Elektron alışverişi)."}]},
+                {t:"Mol Kavramı", tag:"TYT", c:[{h:"Avogadro",t:"6.02x10^23 tanecik 1 moldür."}]},
+                {t:"Hesaplamalar", tag:"TYT", c:[{h:"Kütle Korunumu",t:"Girenlerin kütlesi ürünlere eşittir."}]},
+                {t:"Modern Atom", tag:"AYT", c:[{h:"Orbital",t:"Elektronun bulunma olasılığının olduğu bölge."}]},
+                {t:"Gazlar", tag:"AYT", c:[{h:"İdeal Gaz",t:"PV = nRT formülü."}]},
+                {t:"Sıvı Çözeltiler", tag:"AYT", c:[{h:"Molarite",t:"M = n/V (Mol/Hacim)."}]},
+                {t:"Enerji", tag:"AYT", c:[{h:"Entalpi (H)",t:"Isı kapsamıdır. Delta H ile ölçülür."}]},
+                {t:"Hız", tag:"AYT", c:[{h:"Katalizör",t:"Tepkimeyi hızlandırır, başlamayanı başlatmaz."}]},
+                {t:"Denge", tag:"AYT", c:[{h:"Le Chatelier",t:"Sistem yapılan etkiye ters tepki verir."}]},
+                {t:"Elektrokimya", tag:"AYT", c:[{h:"Anot",t:"Yükseltgenmenin olduğu elektrot."}]},
+                {t:"Organik", tag:"AYT", c:[{h:"Karbon",t:"4 bağ yapar."},{h:"Alkan",t:"Doymuş hidrokarbon."}]}
             ],
             "Biyoloji": [
-                {t:"Hücre", tag:"TYT", c:[{h:"Mitokondri", t:"Hücrenin enerji santralidir. Oksijenli solunum ile ATP üretir."},{h:"Ribozom", t:"Protein sentezinin yapıldığı, tüm canlılarda bulunan organeldir."}]},
-                {t:"Canlıların Sınıflandırılması", tag:"TYT", c:[{h:"Tür Tanımı", t:"Ortak atadan gelen ve çiftleştiklerinde verimli döl veren canlı topluluğudur."}]},
-                {t:"Sistemler", tag:"AYT", c:[{h:"Sinir Sistemi", t:"Nöronlar ve sinapslar aracılığıyla elektrokimyasal iletim sağlar."}]}
+                {t:"Canlıların Ortak Öz.", tag:"TYT", c:[{h:"Solunum",t:"Enerji (ATP) üretimi."}]},
+                {t:"Temel Bileşenler", tag:"TYT", c:[{h:"Enzimler",t:"Biyolojik katalizörlerdir, protein yapılıdır."}]},
+                {t:"Hücre", tag:"TYT", c:[{h:"Mitokondri",t:"Enerji santrali."},{h:"Ribozom",t:"Protein sentezi."}]},
+                {t:"Sınıflandırma", tag:"TYT", c:[{h:"Tür",t:"Çiftleştiklerinde verimli döl verenler."}]},
+                {t:"Bölünmeler", tag:"TYT", c:[{h:"Mitoz",t:"Kalıtsal çeşitlilik yoktur."},{h:"Mayoz",t:"Üreme hücresi oluşur."}]},
+                {t:"Kalıtım", tag:"TYT", c:[{h:"Gen",t:"Karakterleri belirleyen DNA parçası."}]},
+                {t:"Ekoloji", tag:"TYT", c:[{h:"Ekosistem",t:"Canlı + Cansız çevre."}]},
+                {t:"Sinir Sistemi", tag:"AYT", c:[{h:"Nöron",t:"Sinir hücresi."},{h:"Sinaps",t:"İletim bölgesi."}]},
+                {t:"Endokrin", tag:"AYT", c:[{h:"Hormon",t:"Kan yoluyla taşınır."}]},
+                {t:"Duyu Organları", tag:"AYT", c:[{h:"Retina",t:"Gözde görüntünün oluştuğu ağ tabaka."}]},
+                {t:"Destek Hareket", tag:"AYT", c:[{h:"Kaslar",t:"Aktin ve Miyozin iplikleri bulunur."}]},
+                {t:"Sindirim", tag:"AYT", c:[{h:"Emilim",t:"İnce bağırsakta villuslar ile olur."}]},
+                {t:"Dolaşım", tag:"AYT", c:[{h:"Kalp",t:"4 odacıklı (2 kulakçık, 2 karıncık)."}]},
+                {t:"Solunum", tag:"AYT", c:[{h:"Alveol",t:"Gaz değişim yüzeyi."}]},
+                {t:"Protein Sentezi", tag:"AYT", c:[{h:"Transkripsiyon",t:"DNA'dan RNA sentezi."}]},
+                {t:"Fotosentez", tag:"AYT", c:[{h:"Klorofil",t:"Işığı soğuran pigment."}]}
             ],
             "Tarih": [
-                {t:"İslamiyet Öncesi Türk", tag:"TYT", c:[{h:"Kurultay", t:"Devlet işlerinin görüşüldüğü meclis. Demokratik bir yapı gösterir."},{h:"Kut Anlayışı", t:"Hükümdarlığın tanrı tarafından verildiğine inanılmasıdır."}]},
-                {t:"Osmanlı Tarihi", tag:"TYT", c:[{h:"İskan Politikası", t:"Fethedilen yerlere Türkmenlerin yerleştirilerek kalıcılığın sağlanmasıdır."}]},
-                {t:"İnkılap Tarihi", tag:"TYT-AYT", c:[{h:"Amasya Genelgesi", t:"Kurtuluş Savaşı'nın amacı, gerekçesi ve yöntemi ilk kez belirtilmiştir."}]}
+                {t:"Tarih Bilimi", tag:"TYT", c:[{h:"Olay/Olgu",t:"Olay somut ve anlık, olgu soyut ve süreçtir."}]},
+                {t:"İlk Çağ", tag:"TYT", c:[{h:"Sümerler",t:"Yazıyı bulan uygarlık."}]},
+                {t:"İslamiyet Öncesi", tag:"TYT", c:[{h:"Kurultay",t:"Devlet işlerinin görüşüldüğü meclis."}]},
+                {t:"Türk İslam", tag:"TYT", c:[{h:"Talas Savaşı",t:"Türklerin kitleler halinde İslam'a geçişi."}]},
+                {t:"Osmanlı Kuruluş", tag:"TYT", c:[{h:"İskan",t:"Balkanlara Türkmen yerleştirme politikası."}]},
+                {t:"Osmanlı Yükselme", tag:"TYT", c:[{h:"İstanbul'un Fethi",t:"1453, Orta Çağ kapandı Yeni Çağ başladı."}]},
+                {t:"Osmanlı Duraklama", tag:"TYT", c:[{h:"Beşik Ulemalığı",t:"Alimin oğlu alimdir anlayışı."}]},
+                {t:"Dağılma Dönemi", tag:"TYT", c:[{h:"Denge Politikası",t:"Büyük devletlerin çıkar çatışmasını kullanma."}]},
+                {t:"1. Dünya Savaşı", tag:"TYT-AYT", c:[{h:"Çanakkale",t:"Milli bilincin uyandığı cephe."}]},
+                {t:"Kurtuluş Savaşı", tag:"TYT-AYT", c:[{h:"Sakarya",t:"Türk ordusunun son savunma savaşı."}]},
+                {t:"İnkılaplar", tag:"TYT-AYT", c:[{h:"Cumhuriyetçilik",t:"Milli egemenlik."},{h:"Laiklik",t:"Akıl ve bilim."}]}
             ],
             "Coğrafya": [
-                {t:"Harita Bilgisi", tag:"TYT", c:[{h:"İzohipsler", t:"Eş yükselti eğrileridir. Birbirini kesmezler, sıklaştığı yerde eğim fazladır."}]},
-                {t:"İklim Bilgisi", tag:"TYT", c:[{h:"Basınç Merkezleri", t:"Alçak basınçta hava yükselir ve yağış bırakır. Yüksek basınçta hava alçalır ve kurudur."}]},
-                {t:"Türkiye'nin Yerşekilleri", tag:"AYT", c:[{h:"Platolar", t:"Akarsular tarafından derince yarılmış yüksek düzlüklerdir. İç Anadolu'da yaygındır."}]}
+                {t:"Doğa ve İnsan", tag:"TYT", c:[{h:"Konu",t:"İnsan ve doğa etkileşimi."}]},
+                {t:"Dünya'nın Şekli", tag:"TYT", c:[{h:"Geoit",t:"Kutuplardan basık, ekvatordan şişkin."}]},
+                {t:"Harita Bilgisi", tag:"TYT", c:[{h:"İzohips",t:"Eş yükselti eğrileri."}]},
+                {t:"İklim Bilgisi", tag:"TYT", c:[{h:"Troposfer",t:"İklim olaylarının görüldüğü katman."}]},
+                {t:"Nüfus", tag:"TYT", c:[{h:"Piramitler",t:"Gelişmişlik düzeyini gösterir."}]},
+                {t:"İç Kuvvetler", tag:"TYT", c:[{h:"Orojenez",t:"Dağ oluşumu."}]},
+                {t:"Dış Kuvvetler", tag:"TYT", c:[{h:"Rüzgar",t:"Kurak bölgelerde etkilidir."}]},
+                {t:"Türkiye İklimi", tag:"AYT", c:[{h:"Akdeniz",t:"Yazlar sıcak kurak, kışlar ılık yağışlı."}]},
+                {t:"Ekonomik Faaliyet", tag:"AYT", c:[{h:"Birincil",t:"Tarım, hayvancılık."},{h:"İkincil",t:"Sanayi."}]}
             ],
             "Edebiyat": [
-                {t:"Şiir Bilgisi", tag:"AYT", c:[{h:"Redif ve Kafiye", t:"Redif, dize sonundaki görevce aynı eklerdir. Kafiye ise ses benzerliğidir."}]},
-                {t:"Halk Edebiyatı", tag:"AYT", c:[{h:"Koşma", t:"11'li hece ölçüsüyle yazılan, aşk ve doğa konularını işleyen şiir türüdür."}]},
-                {t:"Tanzimat Dönemi", tag:"AYT", c:[{h:"Şinasi", t:"İlklerin adamıdır. İlk tiyatro (Şair Evlenmesi), ilk makale, ilk özel gazete."}]}
+                {t:"İslamiyet Öncesi", tag:"AYT", c:[{h:"Sav",t:"Atasözü."},{h:"Sagu",t:"Ağıt."}]},
+                {t:"Halk Edebiyatı", tag:"AYT", c:[{h:"Koşma",t:"11'li hece ölçüsü, aşk konusu."}]},
+                {t:"Divan Edebiyatı", tag:"AYT", c:[{h:"Gazel",t:"Aşk, şarap, kadın. aa, ba, ca..."}]},
+                {t:"Tanzimat 1", tag:"AYT", c:[{h:"Şinasi",t:"İlklerin adamı."},{h:"Namık Kemal",t:"Vatan şairi."}]},
+                {t:"Servet-i Fünun", tag:"AYT", c:[{h:"Halit Ziya",t:"Batılı anlamda ilk roman (Mai ve Siyah)."}]},
+                {t:"Milli Edebiyat", tag:"AYT", c:[{h:"Ömer Seyfettin",t:"Olay hikayeciliği."},{h:"Genç Kalemler",t:"Yeni Lisan hareketi."}]},
+                {t:"Cumhuriyet Şiiri", tag:"AYT", c:[{h:"Garipçiler",t:"O.Veli, kural tanımazlık."},{h:"İkinci Yeni",t:"İmge, kapalı anlatım (Cemal Süreya)."}]},
+                {t:"Cumhuriyet Roman", tag:"AYT", c:[{h:"Yaşar Kemal",t:"Çukurova, İnce Memed."}]},
+                {t:"Edebi Akımlar", tag:"AYT", c:[{h:"Romantizm",t:"Duygu."},{h:"Realizm",t:"Gerçekçilik."}]}
             ]
         };
 
-        // --- CINEBOT VERİTABANI ---
-        const movies = [
-            {t:"The Hangover", g:["komedi","macera"], d:"Bekarlığa veda partisi için Las Vegas'a giden arkadaşların, sabah hiçbir şey hatırlamadan uyanıp kayıp damadı aramalarını anlatan kahkaha dolu bir macera."},
-            {t:"Superbad", g:["komedi"], d:"Liseden mezun olmak üzere olan iki yakın arkadaşın, bir ev partisine içki götürme vaadiyle atıldıkları komik ve talihsiz olaylar zinciri."},
-            {t:"3 Idiots", g:["komedi","dram"], d:"Mühendislik okuyan üç arkadaşın eğitim sistemine başkaldırısını ve kayıp arkadaşlarını ararken yaşadıkları duygusal ve komik anları anlatır."},
-            {t:"Deadpool", g:["komedi","aksiyon","süper kahraman"], d:"Kanser tedavisi görürken yüzü tanınmaz hale gelen ve süper güçler kazanan eski bir askerin, kara mizah dolu intikam hikayesi."},
-            {t:"The Truman Show", g:["komedi","dram","bilim kurgu"], d:"Tüm hayatının aslında bir televizyon şovu olduğunu ve etrafındaki herkesin oyuncu olduğunu fark etmeyen bir adamın hikayesi."},
-            {t:"Grand Budapest Hotel", g:["komedi","macera"], d:"Efsanevi bir otel görevlisi ve onun sadık lobicisinin, paha biçilemez bir tablo hırsızlığı ve miras kavgası etrafında gelişen renkli macerası."},
-            {t:"Interstellar", g:["bilim kurgu","uzay"], d:"İnsanlığın soyunu devam ettirmek için bir grup astronotun solucan deliğinden geçişini anlatan bilimsel bir başyapıt."},
-            {t:"Inception", g:["bilim kurgu","aksiyon"], d:"Rüyaların içine girerek insanların fikirlerini çalan bir hırsızın son ve en zorlu görevini anlatır."},
-            {t:"The Dark Knight", g:["aksiyon","suç"], d:"Batman ve Joker arasındaki psikolojik ve fiziksel savaşı konu alan, suç türünün zirvesi."},
-            {t:"Fight Club", g:["dram","psikolojik"], d:"Tüketim toplumuna isyan eden iki adamın kurduğu yeraltı dövüş kulübünün hikayesi."},
-            {t:"Pulp Fiction", g:["suç","dram"], d:"Los Angeles yeraltı dünyasından farklı karakterlerin iç içe geçen şiddet ve mizah dolu öyküleri."},
-            {t:"Forrest Gump", g:["dram","romantik"], d:"Düşük IQ'lu ama koca yürekli Forrest'ın ABD tarihine tanıklık eden inanılmaz yaşam öyküsü."},
-            {t:"The Matrix", g:["bilim kurgu","aksiyon"], d:"Gerçek sandığımız dünyanın aslında makineler tarafından yaratılmış bir simülasyon olduğunun keşfi."},
-            {t:"Avengers: Endgame", g:["aksiyon","bilim kurgu"], d:"Thanos'un evreni yok etmesinden sonra kahramanların her şeyi geri getirmek için verdiği son savaş."},
-            {t:"The Conjuring", g:["korku"], d:"Paranormal araştırmacıların perili bir çiftlik evinde yaşayan bir aileye yardım etmesini anlatan ürkütücü film."},
-            {t:"It", g:["korku"], d:"Kasabadaki çocukları avlayan, korkularından beslenen palyaço Pennywise'ın hikayesi."},
-            {t:"The Godfather", g:["suç","dram"], d:"Mafya babası Vito Corleone ve ailesinin suç dünyasındaki yükselişi ve düşüşü."},
-            {t:"Parasite", g:["gerilim","dram"], d:"Fakir bir ailenin zengin bir ailenin hayatına sızarak sınıf farklarını ortaya koyan ödüllü film."},
-            {t:"Titanic", g:["romantik","dram"], d:"Batmaz denilen gemide yaşanan büyük bir aşk ve tarihin en büyük deniz felaketi."},
-            {t:"Coco", g:["animasyon","aile"], d:"Müzisyen olmak isteyen Miguel'in Ölüler Diyarı'na yaptığı renkli ve duygusal yolculuk."},
-            {t:"Toy Story", g:["animasyon","macera"], d:"Oyuncakların insanlar yokken canlandığı gizli ve eğlenceli dünyası."}
-        ];
+        const movies=[{t:"Interstellar",g:["bilim kurgu"],d:"İnsanlığın kurtuluşu için solucan deliğinden geçen astronotların zamanla yarışı."},{t:"Inception",g:["bilim kurgu","aksiyon"],d:"Rüyalara girip fikir çalan bir hırsızın son görevi."},{t:"The Dark Knight",g:["aksiyon","suç"],d:"Batman ve Joker'in kaotik savaşı."},{t:"Fight Club",g:["dram"],d:"Tüketim toplumuna isyan eden yeraltı dövüş kulübü."},{t:"Forrest Gump",g:["dram","romantik"],d:"Düşük IQ'lu Forrest'ın inanılmaz hayat hikayesi."},{t:"The Matrix",g:["bilim kurgu"],d:"Gerçeğin bir simülasyon olduğunun keşfi."},{t:"Parasite",g:["gerilim","dram"],d:"Fakir ailenin zengin aileye sızması."},{t:"Avengers: Endgame",g:["aksiyon"],d:"Kahramanların Thanos'a karşı son savaşı."},{t:"Joker",g:["dram","suç"],d:"Bir komedyenin suç prensine dönüşümü."},{t:"The Hangover",g:["komedi"],d:"Las Vegas'ta kayıp damadı arayan arkadaşların komik macerası."},{t:"Superbad",g:["komedi"],d:"Liseden mezun olan gençlerin parti macerası."},{t:"3 Idiots",g:["komedi","dram"],d:"Eğitim sistemini eleştiren üç mühendislik öğrencisi."},{t:"Deadpool",g:["komedi","aksiyon"],d:"Süper güçlere sahip geveze bir paralı asker."},{t:"The Truman Show",g:["komedi","dram"],d:"Hayatı bir TV şovu olan adamın uyanışı."},{t:"Titanic",g:["romantik"],d:"Batan gemide büyük aşk."},{t:"The Conjuring",g:["korku"],d:"Perili ev vakası."},{t:"It",g:["korku"],d:"Palyaço dehşeti."}];
+        let watchList=JSON.parse(localStorage.getItem('myList'))||[];
 
-        let watchList = JSON.parse(localStorage.getItem('myWatchlist')) || [];
-
-        /* --- SİTE YÖNETİMİ --- */
         function openNotes(){document.getElementById('notesModal').style.display='flex';}
         function openGameMenu(){document.getElementById('gamesMenuModal').style.display='flex';}
         function openMovies(){toggleChat(true);}
         function closeModal(id){document.getElementById(id).style.display='none';}
-        function toggleChat(f){const c=document.getElementById('cineBot'); if(f)c.style.display='flex'; else c.style.display=c.style.display==='flex'?'none':'flex'; renderWatchlist();}
+        function toggleChat(f){const c=document.getElementById('cineBot'); if(f)c.style.display='flex'; else c.style.display=c.style.display==='flex'?'none':'flex'; renderList();}
+        function switchTab(t){
+            document.querySelectorAll('.chat-tab').forEach(x=>x.classList.remove('active'));
+            if(t==='chat'){document.querySelector('.chat-tab:nth-child(1)').classList.add('active'); document.getElementById('chatView').style.display='flex'; document.getElementById('chatInputArea').style.display='flex'; document.getElementById('listView').style.display='none';}
+            else{document.querySelector('.chat-tab:nth-child(2)').classList.add('active'); document.getElementById('chatView').style.display='none'; document.getElementById('chatInputArea').style.display='none'; document.getElementById('listView').style.display='block'; renderList();}
+        }
         function loadSubject(s){
             const c=document.getElementById('topicContainer');
             c.innerHTML=curriculum[s].map(t=>`<div class="topic-group"><div class="topic-head">${t.t}<span class="tag ${t.tag.includes('T')?'tyt':'ayt'}">${t.tag}</span></div><div class="flashcards">${t.c.map(x=>`<div class="card"><h5>${x.h}</h5><p>${x.t}</p></div>`).join('')}</div></div>`).join('');
-        }
-        function switchTab(tab){
-            document.querySelectorAll('.chat-tab').forEach(t=>t.classList.remove('active'));
-            if(tab==='chat'){
-                document.querySelector('.chat-tab:nth-child(1)').classList.add('active');
-                document.getElementById('chatView').style.display='flex';
-                document.getElementById('chatInputArea').style.display='flex';
-                document.getElementById('listView').style.display='none';
-            }else{
-                document.querySelector('.chat-tab:nth-child(2)').classList.add('active');
-                document.getElementById('chatView').style.display='none';
-                document.getElementById('chatInputArea').style.display='none';
-                document.getElementById('listView').style.display='block';
-                renderWatchlist();
-            }
         }
         function sendMessage(){
             const i=document.getElementById('chatInput'); const v=i.value.trim().toLowerCase(); if(!v)return;
             addMsg(v,'user'); i.value='';
             setTimeout(()=>{
                 const m=movies.filter(x=>x.g.some(g=>v.includes(g)));
-                if(m.length){
-                    const r=m[Math.floor(Math.random()*m.length)];
-                    const link=`https://www.fullhdfilmizlesene.tv/arama/${encodeURIComponent(r.t)}`;
-                    addMsg(`Öneri: <b>${r.t}</b><br><small>${r.d}</small><div class="movie-card-chat"><button class="btn-sm btn-watch" onclick="window.open('${link}','_blank')"><i class="fa-solid fa-play"></i> Sitede İzle</button><button class="btn-sm btn-add" onclick="addToList('${r.t}','${r.g[0]}')"><i class="fa-solid fa-plus"></i> Listeme Ekle</button></div>`,'bot');
-                } else addMsg("Bulunamadı.",'bot');
+                if(m.length){const r=m[Math.floor(Math.random()*m.length)]; 
+                addMsg(`Öneri: <b>${r.t}</b><br>${r.d}<div class="movie-card-chat"><button class="btn-sm btn-watch" onclick="window.open('https://www.fullhdfilmizlesene.tv/arama/${encodeURIComponent(r.t)}','_blank')"><i class="fa-solid fa-play"></i> Sitede İzle</button><button class="btn-sm btn-add" onclick="addList('${r.t}','${r.g[0]}')">Listeme Ekle</button></div>`,'bot');}
+                else addMsg("Bulunamadı.",'bot');
             },500);
         }
         function addMsg(t,c){const d=document.createElement('div');d.className=`msg ${c}`;d.innerHTML=t;document.getElementById('chatView').append(d);}
         function handleEnter(e){if(e.key==='Enter')sendMessage();}
-        function addToList(t,g){if(!watchList.some(m=>m.t===t)){watchList.push({t,g});localStorage.setItem('myWatchlist',JSON.stringify(watchList));alert("Eklendi!");}else alert("Zaten listede.");}
-        function renderWatchlist(){
-            const d=document.getElementById('listView');
-            if(watchList.length===0)d.innerHTML='<p style="text-align:center;color:#999;margin-top:20px;">Listeniz boş.</p>';
-            else d.innerHTML=watchList.map((m,i)=>`<div class="w-item"><div class="w-info"><span>${m.t}</span><small>${m.g}</small></div><i class="fa-solid fa-trash w-remove" onclick="removeWatch(${i})"></i></div>`).join('');
-        }
-        function removeWatch(i){watchList.splice(i,1);localStorage.setItem('myWatchlist',JSON.stringify(watchList));renderWatchlist();}
+        function addList(t,g){if(!watchList.some(x=>x.t==t)){watchList.push({t,g});localStorage.setItem('myList',JSON.stringify(watchList));alert("Eklendi");}else alert("Zaten var");}
+        function renderList(){const d=document.getElementById('listView'); if(!watchList.length)d.innerHTML='<p style="text-align:center;color:#999;margin-top:20px;">Boş.</p>'; else d.innerHTML=watchList.map((m,i)=>`<div class="w-item"><div><span>${m.t}</span><br><small>${m.g}</small></div><i class="fa-solid fa-trash w-remove" onclick="rmList(${i})"></i></div>`).join('');}
+        function rmList(i){watchList.splice(i,1);localStorage.setItem('myList',JSON.stringify(watchList));renderList();}
 
-        /* --- OYUN MOTORLARI --- */
         const cvs=document.getElementById('gameCanvas'), ctx=cvs.getContext('2d');
         const ncvs=document.getElementById('nextCanvas'), nctx=ncvs.getContext('2d');
-        let gameInt, activeG, sc=0, lvl=1, lvs=3, pacman, ghosts, map, dots, snake, food, sDir, tBoard, tPiece, ntPiece;
+        let gameInt, activeG, sc=0, lvl=1, lvs=3;
+        let snake, food, sDir, particles=[];
+        let tBoard, tPiece, ntPiece;
+        let pacman, ghosts, map, dots;
 
-        function initGame(g){document.getElementById('gamesMenuModal').style.display='none'; document.getElementById('gameModal').style.display='flex'; activeG=g; restart();}
-        function stopGame(){clearInterval(gameInt); document.getElementById('gameModal').style.display='none';}
+        function initGame(g){document.getElementById('gamesMenuModal').style.display='none';document.getElementById('gameModal').style.display='flex';activeG=g;restart();}
+        function stopGame(){clearInterval(gameInt);document.getElementById('gameModal').style.display='none';}
         function restart(){
-            document.getElementById('gameOverOverlay').style.display='none'; sc=0; lvl=1; lvs=3; updUI(); clearInterval(gameInt);
-            document.getElementById('nextPieceContainer').style.display='none'; document.getElementById('livesContainer').style.display='none';
+            document.getElementById('gameOverOverlay').style.display='none';sc=0;lvl=1;lvs=3;updUI();clearInterval(gameInt);
+            document.getElementById('nextPieceContainer').style.display='none';document.getElementById('livesContainer').style.display='none';
             if(activeG==='snake'){cvs.width=400;cvs.height=400;sSnake();}
             else if(activeG==='tetris'){cvs.width=240;cvs.height=400;document.getElementById('nextPieceContainer').style.display='block';sTetris();}
             else if(activeG==='pacman'){cvs.width=448;cvs.height=496;document.getElementById('livesContainer').style.display='block';sPacman();}
@@ -363,10 +405,9 @@
         function updUI(){document.getElementById('scoreVal').innerText=sc;document.getElementById('levelVal').innerText=lvl;document.getElementById('livesVal').innerText="❤️".repeat(lvs);}
         function gameOver(){clearInterval(gameInt);document.getElementById('finalScore').innerText=sc;document.getElementById('gameOverOverlay').style.display='flex';}
 
-        // 1. SNAKE
         function sSnake(){
             const box=20; snake=[{x:10,y:10}]; food={x:15,y:15}; sDir={x:1,y:0};
-            function update(){
+            function upd(){
                 ctx.fillStyle="#111"; ctx.fillRect(0,0,400,400);
                 for(let i=0;i<=400;i+=20){ctx.strokeStyle="#222";ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,400);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(400,i);ctx.stroke();}
                 let h={x:snake[0].x+sDir.x, y:snake[0].y+sDir.y};
@@ -374,146 +415,45 @@
                 snake.unshift(h);
                 if(h.x==food.x&&h.y==food.y){sc+=10;food={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)};updUI();}else snake.pop();
                 ctx.fillStyle="red";ctx.beginPath();ctx.arc(food.x*20+10,food.y*20+10,8,0,7);ctx.fill();
-                snake.forEach((s,i)=>{ctx.fillStyle=i==0?"#00cec9":"#0984e3";ctx.fillRect(s.x*20+1,s.y*20+1,18,18);if(i==0){ctx.fillStyle="white";ctx.fillRect(s.x*20+5,s.y*20+5,4,4);ctx.fillRect(s.x*20+11,s.y*20+5,4,4);}});
+                snake.forEach((s,i)=>{ctx.fillStyle=i==0?"#00cec9":"#0984e3";ctx.fillRect(s.x*20+1,s.y*20+1,18,18);});
             }
             document.onkeydown=e=>{if(activeG==='snake'){if(e.key=="ArrowUp"&&sDir.y==0)sDir={x:0,y:-1};if(e.key=="ArrowDown"&&sDir.y==0)sDir={x:0,y:1};if(e.key=="ArrowLeft"&&sDir.x==0)sDir={x:-1,y:0};if(e.key=="ArrowRight"&&sDir.x==0)sDir={x:1,y:0};}}
-            gameInt=setInterval(update, 150);
+            gameInt=setInterval(upd,150);
         }
 
-        // 2. TETRIS
         function sTetris(){
             const R=20,C=12,S=20,P=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,1,0],[0,1,1]],[[0,1,1],[1,1,0]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]]], Clr=["cyan","yellow","purple","green","red","blue","orange"];
             tBoard=Array(R).fill().map(()=>Array(C).fill(0));
             function nP(){let r=Math.floor(Math.random()*P.length);return{s:P[r],c:Clr[r],x:4,y:0};}
             tPiece=nP(); ntPiece=nP(); dN();
-            function draw(){ctx.fillStyle="black";ctx.fillRect(0,0,240,400);tBoard.forEach((r,y)=>r.forEach((c,x)=>{if(c){ctx.fillStyle=c;ctx.fillRect(x*S,y*S,S,S);ctx.strokeRect(x*S,y*S,S,S)}}));tPiece.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){ctx.fillStyle=tPiece.c;ctx.fillRect((tPiece.x+x)*S,(tPiece.y+y)*S,S,S)}}));}
             function dN(){nctx.fillStyle="#222";nctx.fillRect(0,0,80,80);ntPiece.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){nctx.fillStyle=ntPiece.c;nctx.fillRect((x+1)*15,(y+1)*15,15,15)}}));}
+            function draw(){ctx.fillStyle="black";ctx.fillRect(0,0,240,400);tBoard.forEach((r,y)=>r.forEach((c,x)=>{if(c){ctx.fillStyle=c;ctx.fillRect(x*S,y*S,S,S);ctx.strokeRect(x*S,y*S,S,S)}}));tPiece.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){ctx.fillStyle=tPiece.c;ctx.fillRect((tPiece.x+x)*S,(tPiece.y+y)*S,S,S)}}));}
             function coll(x,y,s){return s.some((r,dy)=>r.some((v,dx)=>v&&(tPiece.y+y+dy>=R||tPiece.x+x+dx<0||tPiece.x+x+dx>=C||tBoard[tPiece.y+y+dy]?.[tPiece.x+x+dx])));}
-            function lock(){tPiece.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){if(tPiece.y+y<0){gameOver();return;}tBoard[tPiece.y+y][tPiece.x+x]=tPiece.c;}}));for(let r=0;r<R;r++)if(tBoard[r].every(c=>c)){tBoard.splice(r,1);tBoard.unshift(Array(C).fill(0));sc+=100;updUI();}tPiece=ntPiece;ntPiece=nP();dN();}
-            function move(){if(!coll(0,1,tPiece.s))tPiece.y++;else lock();draw();}
+            function move(){if(!coll(0,1,tPiece.s))tPiece.y++;else{tPiece.s.forEach((r,y)=>r.forEach((v,x)=>{if(v){if(tPiece.y+y<0){gameOver();return;}tBoard[tPiece.y+y][tPiece.x+x]=tPiece.c;}}));for(let r=0;r<R;r++)if(tBoard[r].every(c=>c)){tBoard.splice(r,1);tBoard.unshift(Array(C).fill(0));sc+=100;updUI();}tPiece=ntPiece;ntPiece=nP();dN();}draw();}
             document.onkeydown=e=>{if(activeG==='tetris'){if(e.key=="ArrowLeft"&&!coll(-1,0,tPiece.s))tPiece.x--;if(e.key=="ArrowRight"&&!coll(1,0,tPiece.s))tPiece.x++;if(e.key=="ArrowDown")move();if(e.key=="ArrowUp"){let r=tPiece.s[0].map((_,i)=>tPiece.s.map(row=>row[i]).reverse());if(!coll(0,0,r))tPiece.s=r;}}}
             gameInt=setInterval(move,500);
         }
 
-        // 3. PACMAN (FIXED)
         function sPacman(){
-            const T=16, W=28, H=31; // Original size scaling
-            // Simplified grid map (1: Wall, 0: Dot, 9: Empty, 3: Power)
-            const M=[
-                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-                [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-                [1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1],
-                [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-                [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                [1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1],
-                [1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1],
-                [1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1],
-                [1,1,1,1,1,1,0,1,1,1,1,1,9,1,1,9,1,1,1,1,1,0,1,1,1,1,1,1],
-                [1,1,1,1,1,1,0,1,1,1,1,1,9,1,1,9,1,1,1,1,1,0,1,1,1,1,1,1],
-                [1,1,1,1,1,1,0,1,1,9,9,9,9,9,9,9,9,9,9,1,1,0,1,1,1,1,1,1],
-                [1,1,1,1,1,1,0,1,1,9,1,1,1,1,1,1,1,1,9,1,1,0,1,1,1,1,1,1],
-                [1,1,1,1,1,1,0,1,1,9,1,9,9,9,9,9,9,1,9,1,1,0,1,1,1,1,1,1],
-                [1,0,0,0,0,0,0,0,0,9,1,9,9,9,9,9,9,1,9,0,0,0,0,0,0,0,0,1],
-                [1,0,1,1,1,1,0,1,1,9,1,1,1,1,1,1,1,1,9,1,1,0,1,1,1,1,0,1],
-                [1,0,1,1,1,1,0,1,1,9,1,1,1,1,1,1,1,1,9,1,1,0,1,1,1,1,0,1],
-                [1,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,1],
-                [1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1],
-                [1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1],
-                [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-                [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-                [1,3,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,3,1],
-                [1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1],
-                [1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1],
-                [1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1],
-                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-            ]; // 28 rows, 28 cols - Resized for 16px tile
-            
-            // Re-scale canvas for this map (28*16 = 448 width, 28*16 = 448 height)
-            cvs.width = 448; cvs.height = 448;
-
-            function load(){
-                map=JSON.parse(JSON.stringify(M));
-                pacman={x:14,y:20,d:0,nd:0}; // Grid pos
-                ghosts=[{x:13,y:11,c:'red',d:0},{x:14,y:11,c:'pink',d:1},{x:13,y:13,c:'cyan',d:2},{x:14,y:13,c:'orange',d:3}];
-                dots=0; for(let r=0;r<28;r++)for(let c=0;c<28;c++)if(map[r][c]==0||map[r][c]==3)dots++;
-            }
-            load(); let moveTimer=0, ghostTimer=0;
-
-            function update(){
-                moveTimer++;
-                if(moveTimer>8){ // Control Pacman Speed
-                    moveTimer=0;
-                    // Try next dir
-                    let dirs=[{x:1,y:0},{x:0,y:1},{x:-1,y:0},{x:0,y:-1}]; // 0:R,1:D,2:L,3:U
-                    let nd=dirs[pacman.nd];
-                    if(map[pacman.y+nd.y][pacman.x+nd.x] !== 1) pacman.d = pacman.nd;
-                    
-                    let d=dirs[pacman.d];
-                    if(map[pacman.y+d.y][pacman.x+d.x] !== 1) {
-                        pacman.x += d.x; pacman.y += d.y;
-                        // Portal
-                        if(pacman.x<0)pacman.x=27; if(pacman.x>27)pacman.x=0;
-                    }
-                    
-                    // Eat
-                    let t=map[pacman.y][pacman.x];
-                    if(t===0){map[pacman.y][pacman.x]=2; sc+=10; dots--;}
-                    else if(t===3){map[pacman.y][pacman.x]=2; sc+=50; dots--;}
-                    if(dots<=0) {alert("Kazandın!"); load();}
-                }
-
-                ghostTimer++;
-                if(ghostTimer>12){ // Ghost Speed
-                    ghostTimer=0;
-                    ghosts.forEach(g=>{
-                        let dirs=[{x:1,y:0},{x:0,y:1},{x:-1,y:0},{x:0,y:-1}];
-                        // Simple Random AI
-                        let validDirs = [];
-                        for(let i=0;i<4;i++){
-                            let nx=g.x+dirs[i].x, ny=g.y+dirs[i].y;
-                            if(map[ny] && map[ny][nx] !== 1 && (i !== (g.d+2)%4)) validDirs.push(i);
-                        }
-                        if(validDirs.length===0) validDirs.push((g.d+2)%4); // Reverse if stuck
-                        g.d = validDirs[Math.floor(Math.random()*validDirs.length)];
-                        g.x += dirs[g.d].x; g.y += dirs[g.d].y;
-                        
-                        if(g.x===pacman.x && g.y===pacman.y) {
-                            lvs--; updUI();
-                            if(lvs<=0) gameOver();
-                            else { pacman.x=14; pacman.y=20; }
-                        }
-                    });
-                }
+            const T=32; const BM=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,3,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,3,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,0,1,1,2,1,1,0,1,0,1,1,0,1],[1,0,0,0,0,1,0,2,2,2,2,2,0,1,0,0,0,0,1],[1,1,1,1,0,1,1,1,2,2,2,1,1,1,0,1,1,1,1],[1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],[1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],[1,3,0,1,0,0,0,0,0,9,0,0,0,0,0,1,0,3,1],[1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1],[1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
+            function load(){map=JSON.parse(JSON.stringify(BM));pacman={x:9,y:9,dX:0,dY:0,nX:0,nY:0,a:0,m:0.2,md:1};ghosts=[{x:9,y:5,c:'red',s:'n'},{x:8,y:5,c:'pink',s:'n'}];dots=0;for(let r=0;r<13;r++)for(let c=0;c<19;c++)if(map[r][c]==0||map[r][c]==3)dots++;}
+            load(); let fr=0;
+            function upd(){
+                fr++; if(map[pacman.y+pacman.nY][pacman.x+pacman.nX]!=1){pacman.dX=pacman.nX;pacman.dY=pacman.nY;}
+                if(map[pacman.y+pacman.dY][pacman.x+pacman.dX]!=1){pacman.x+=pacman.dX;pacman.y+=pacman.dY;pacman.m+=0.1*pacman.md;if(pacman.m>0.4||pacman.m<0.05)pacman.md*=-1;if(pacman.dX==1)pacman.a=0;if(pacman.dX==-1)pacman.a=Math.PI;if(pacman.dY==-1)pacman.a=-Math.PI/2;if(pacman.dY==1)pacman.a=Math.PI/2;}
+                let t=map[pacman.y][pacman.x]; if(t==0){map[pacman.y][pacman.x]=2;sc+=10;dots--;}else if(t==3){map[pacman.y][pacman.x]=2;sc+=50;dots--;ghosts.forEach(g=>g.s='s');setTimeout(()=>ghosts.forEach(g=>g.s='n'),5000);}
+                if(dots<=0){lvl++;load();}
+                ghosts.forEach(g=>{if(Math.random()<0.5){let ds=[{x:0,y:-1},{x:0,y:1},{x:-1,y:0},{x:1,y:0}].filter(d=>map[g.y+d.y][g.x+d.x]!=1);if(ds.length){let m=ds[Math.floor(Math.random()*ds.length)];g.x+=m.x;g.y+=m.y;}}if(g.x==pacman.x&&g.y==pacman.y){if(g.s=='s'){sc+=200;g.x=9;g.y=5;g.s='n';}else{lvs--;if(lvs<=0)gameOver();else{pacman.x=9;pacman.y=9;pacman.dX=0;}}}})
                 updUI(); draw();
             }
-
             function draw(){
-                ctx.fillStyle="black"; ctx.fillRect(0,0,448,448);
-                for(let r=0;r<28;r++)for(let c=0;c<28;c++){
-                    if(map[r][c]===1){ctx.strokeStyle="#1919a6"; ctx.strokeRect(c*T,r*T,T,T);}
-                    else if(map[r][c]===0){ctx.fillStyle="#ffb8ae"; ctx.fillRect(c*T+6,r*T+6,4,4);}
-                    else if(map[r][c]===3){ctx.fillStyle="white"; ctx.beginPath(); ctx.arc(c*T+8,r*T+8,6,0,7); ctx.fill();}
-                }
-                // Pacman
-                ctx.fillStyle="yellow"; ctx.beginPath();
-                let mouth = (moveTimer%2===0) ? 0.2 : 0.05;
-                // Rotation logic visual only
-                ctx.arc(pacman.x*T+8, pacman.y*T+8, 7, 0, 2*Math.PI); ctx.fill();
-                // Ghosts
-                ghosts.forEach(g=>{
-                    ctx.fillStyle=g.c; ctx.beginPath(); ctx.arc(g.x*T+8, g.y*T+8, 7, 0, 2*Math.PI); ctx.fill();
-                });
+                ctx.fillStyle="black";ctx.fillRect(0,0,608,416);
+                for(let r=0;r<13;r++)for(let c=0;c<19;c++){if(map[r][c]==1){ctx.strokeStyle="#0984e3";ctx.strokeRect(c*T+4,r*T+4,24,24);}else if(map[r][c]==0){ctx.fillStyle="#fab1a0";ctx.beginPath();ctx.arc(c*T+16,r*T+16,4,0,7);ctx.fill();}else if(map[r][c]==3){ctx.fillStyle="white";ctx.beginPath();ctx.arc(c*T+16,r*T+16,(fr%4==0?9:6),0,7);ctx.fill();}}
+                let px=pacman.x*T+16,py=pacman.y*T+16; ctx.save();ctx.translate(px,py);ctx.rotate(pacman.a);ctx.beginPath();ctx.arc(0,0,13,pacman.m*Math.PI,(2-pacman.m)*Math.PI);ctx.lineTo(0,0);ctx.fillStyle="yellow";ctx.fill();ctx.restore();
+                ghosts.forEach(g=>{let gx=g.x*T+16,gy=g.y*T+16;ctx.fillStyle=g.s=='s'?'blue':g.c;ctx.beginPath();ctx.arc(gx,gy-4,13,Math.PI,0);ctx.lineTo(gx+13,gy+13);ctx.lineTo(gx-13,gy+13);ctx.fill();});
             }
-            
-            document.onkeydown=e=>{if(activeG==='pacman'){
-                if(e.key==="ArrowRight") pacman.nd=0;
-                if(e.key==="ArrowDown") pacman.nd=1;
-                if(e.key==="ArrowLeft") pacman.nd=2;
-                if(e.key==="ArrowUp") pacman.nd=3;
-            }}
-            gameInt=setInterval(update, 1000/60); // 60 FPS Loop but logic controlled by timers
+            document.onkeydown=e=>{if(activeG==='pacman'){if(e.key=="ArrowUp")pacman.nY=-1;if(e.key=="ArrowDown")pacman.nY=1;if(e.key=="ArrowLeft")pacman.nX=-1;if(e.key=="ArrowRight")pacman.nX=1;if(e.key=="ArrowUp"||e.key=="ArrowDown")pacman.nX=0;else pacman.nY=0;}}
+            gameInt=setInterval(upd,150);
         }
     </script>
 </body>
